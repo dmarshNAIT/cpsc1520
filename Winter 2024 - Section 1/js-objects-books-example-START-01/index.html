@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  
+  <meta charset="utf-8">
+  <title>Welcome to JavaScript</title>
+  
+   <!-- Link to Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/main.js" defer></script>
+</head>
+  
+<body class="d-flex h-100">
+  <div class=" d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main class="px-3 container">
+      <h1 class="text-center">GoodReads Top Books</h1>
+      <form id="books-filter-form">
+        <div class="row">
+          <div class="mb-3 col-5">
+           <input
+              name="filter-query"
+              type="text"
+              class="form-control"
+              placeholder="title search"
+              id="books-filter"
+            >
+          </div>
+          <div class="mb-3 col-4">
+            <select 
+              name="author"
+              class="form-select"
+              id="author-select">
+              <option value="">Select An Author</option>
+              
+            </select>
+           </div>
+          <div class="mb-3 col-3">
+            <button type="submit" class="w-100 btn btn-primary">Filter</button>
+          </div>
+        </div>
+      </form>
+    
+      <div class="table-responsive-lg"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">bookId</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Times Rated</th>
+            </tr>
+          </thead>
+          <tbody id="book-rows">
+
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <!-- 
+    Source for book data:
+    https://www.kaggle.com/jealousleopard/goodreadsbooks?select=books.csv
+  -->
+</body>
+</html>
