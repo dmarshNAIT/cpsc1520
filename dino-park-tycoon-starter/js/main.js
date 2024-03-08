@@ -24,7 +24,6 @@ const dinoBreeds = [
 // TO DO Step 4: create a no-param function called renderTable()
 
 // HTML syntax:
-//  <tbody>  
 //   <tr>
 //     <td>INSERT NAME</td>
 //     <td>INSERT SPECIES</td>
@@ -32,7 +31,6 @@ const dinoBreeds = [
 //     <td>INSERT DIET</td>
 //     <td class="remove" data-dino-id="INSERT NUMBER">REMOVE</td>
 //   </tr>
-// </tbody> 
 
 
 // TO DO Step 5: create a no-param function called renderStats()

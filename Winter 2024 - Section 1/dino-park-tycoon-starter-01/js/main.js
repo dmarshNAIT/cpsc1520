@@ -38,7 +38,7 @@ function renderTable() {
     // for diet: let's make a helper function: carnivore, herbivore, omnivore
   });
 
-} // Dana note to self: fix the starter code template for this HTML
+} 
 
 // TO DO Step 5: create a no-param function called renderStats()
 function renderStats(){
