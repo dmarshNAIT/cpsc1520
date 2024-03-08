@@ -1,0 +1,128 @@
+.kode-mono-1 {
+    font-family: "Kode Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    font-size: 62.5%;
+    /* base font size is now 10px */
+}
+
+body {
+    background-color: grey;
+    font-family: "Kode Mono", monospace;
+    font-size: 2rem;
+    color: green;
+    text-align: center;
+}
+
+.inner-container {
+    max-width: 80rem;
+    margin: auto;
+}
+
+.hide {
+    display:none;
+}
+
+.error {
+    color: red;
+}
+
+.remove:hover,
+button:hover {
+    background-color: azure;
+    cursor: pointer;
+}
+
+
+/********** header styling **********/
+header {
+    background-color: white;
+    border-bottom: 0.25rem solid green;
+}
+
+header img {
+    height: 20rem;
+}
+
+h1 {
+    font-family: 'Jurassic Park', sans-serif;
+    font-size: 10rem;
+    font-weight: 100;
+    margin: 0;
+}
+
+/********** main **********/
+main {
+    padding: 1rem;
+}
+
+main section {
+    border: 0.25rem solid green;
+    margin: 2rem;
+    padding: 2rem;
+    background-color: lightgrey;
+}
+
+h2 {
+    font-size: 4rem;
+    border-bottom: 0.25rem solid green;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/********** form styling **********/
+form {
+    margin: 1rem;
+}
+
+form > * {
+    font-family: "Kode Mono", monospace;
+    padding: 0.5rem;
+}
+
+button {
+    margin-top: 0.5rem;
+    padding: 1rem;
+}
+
+
+/********** table styling **********/
+main section:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+main section:nth-child(2) p {
+    margin: 1rem;
+}
+
+table {
+    margin: 1rem;
+    border-collapse: collapse;
+    font-size: 2rem;
+    ;
+}
+
+table th,
+.remove {
+    font-weight: bold;
+}
+
+table th,
+table td {
+    border-bottom: 0.1rem solid green;
+    padding: 0.5rem;
+}
+
+/********** stats styling **********/
+main section:nth-child(3) p {
+    margin: 1rem;
+}
+
+.dino-stats {
+    padding: 0.5rem;
+}
