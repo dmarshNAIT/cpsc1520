@@ -174,9 +174,24 @@ function getAverageAge() {
 // add ability to remove dino
 tableBodyElement.addEventListener("click", (event) => {
   if (event.target.classList.contains("remove")) {
-    let dinoID = event.target.dataset.dinoId;
-    dinos.splice(dinoID, 1);
+    let clickedDinoID = event.target.dataset.dinoId;
+
+    console.log(dinos)
+
+    let dinoToRemove;
+
+    // find the dino that needs to be removed
+    dinos.forEach((dino, index) => {
+      if(dino.id === clickedDinoID) {
+        dinoToRemove = index;
+      }
+    });
+
+    dinos.splice(dinoToRemove, 1);
     renderTable();
     renderStats();
   }
 });
+
+
+// to do: update this on the other version
