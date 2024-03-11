@@ -190,3 +190,16 @@ tableBodyElement.addEventListener("click", (event) => {
     renderStats();
   }
 });
+
+function getDinosFromFile() {
+
+  fetch('data/dinos.json')
+  .then( response => response.json())
+  .then( (dinoData) => {
+    dinos = dinoData;
+    renderTable();
+    renderStats();
+  })
+}
+
+getDinosFromFile();

@@ -1,0 +1,34 @@
+[
+    {
+        "id": 0,
+        "name": "Rexy",
+        "species": "Tyrannosaurus Rex",
+        "birthYear": 1988,
+        "isMeatEater": true,
+        "isPlantEater": false
+    },
+    {
+        "id": 1,
+        "name": "Randy",
+        "species": "Velociraptor",
+        "birthYear": 1987,
+        "isMeatEater": true,
+        "isPlantEater": false
+    },
+    {
+        "id": 2,
+        "name": "Delta",
+        "species": "Velociraptor",
+        "birthYear": 2012,
+        "isMeatEater": true,
+        "isPlantEater": false
+    },
+    {
+        "id": 3,
+        "name": "Cera",
+        "species": "Triceratops",
+        "birthYear": 1988,
+        "isMeatEater": false,
+        "isPlantEater": true
+    }
+]

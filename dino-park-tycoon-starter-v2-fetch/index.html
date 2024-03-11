@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dino Park</title>
+		<meta name="author" content="dmarshNAIT">
+		
+        <!-- STYLE SHEETS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- FONTS -->
+        <link href="https://fonts.cdnfonts.com/css/jurassic-park" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+        
+        <!-- SCRIPTS -->
+        <script src="js/main.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="inner-container">
+                <img src="img/trex_400x400.png" alt="a T Rex in old-school pixel art, wearing an excited expression">
+                <!-- image taken from https://twitter.com/dinosaurcomics -->
+                <h1>Welcome to the DinoBase</h1>
+            </div>
+            <!-- end inner container -->
+        </header>
+        <main>
+            <div class="inner-container">
+                <section id="form-section">
+                    <h2>Enter a New Dino</h2>
+                    <form id="input-form">
+                        <input name="dino-name" type="text" placeholder="dino's name">
+                        <select name="dino-species" id="dino-species">
+                            <option value="">select species</option>
+                            <!-- this is populated by JS -->
+                        </select>
+                        <input name="dino-year" type="number" placeholder="year born">
+                        <div class="carnivore">
+                            <label for="dino-carnivore">Meat Eater</label>
+                            <input name="dino-carnivore" type="checkbox" id="dino-carnivore">
+                        </div>
+                        <div class="herbivore">
+                            <label for="dino-herbivore">Plant Eater</label>
+                            <input name="dino-herbivore" type="checkbox" id="dino-herbivore">
+                        </div>
+                        <button type="submit">SUBMIT</button>
+                        <p class="error hide">invalid input</p>
+                    </form>
+                </section>
+
+                <section id="table-section">
+                    <h2>Our Dinos</h2>
+                    <table class="hide">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Species</th>
+                                <th>Age</th>
+                                <th>Diet</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- this is populated by JS -->
+                        </tbody>
+                    </table>
+                    <p>No dinos to show.</p>
+                </section>
+
+                <section class="stats-section">
+                    <h2>Dino Stats</h2>
+                    <div class="dino-stats hide">
+                        <p>There are currently
+                            <span id="num-dinos">0</span> dinosaurs in the park.
+                        </p>
+                        <p>Carnivores:
+                            <span id="num-carnivores">0</span>
+                        </p>
+                        <p>Herbivores:
+                            <span id="num-herbivores">0</span>
+                        </p>
+                        <p>Omnivores:
+                            <span id="num-omnivores">0</span>
+                        </p>
+                        <p>The average age is
+                            <span id="avg-age">0</span>.
+                        </p>
+                    </div>
+                    <p class="temp">No dinos to show.</p>
+                </section>
+            </div>
+            <!-- end inner container -->
+        </main>
+    </body>
+</html>

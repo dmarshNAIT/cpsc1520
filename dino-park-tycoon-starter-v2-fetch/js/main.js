@@ -190,3 +190,9 @@ tableBodyElement.addEventListener("click", (event) => {
     renderStats();
   }
 });
+
+
+// TO DO: create a function called getDinosFromFile()
+// this function will read in the json file from the data folder, parse its contents, then populate the dinos array
+// finally, it will call the appropriate functions to render the content on the page
+// this function should be called once when the page is initially loaded
