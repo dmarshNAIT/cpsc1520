@@ -29,16 +29,31 @@ function renderTable() {
      <tr>
         <td>${dino.name}</td>
         <td>${dino.species}</td>
-        <td>TO DO: INSERT AGE</td>
-        <td>TO DO: INSERT DIET</td>
+        <td>${getAge(dino.birthYear)}</td>
+        <td>${getDiet(dino.isMeatEater, dino.isPlantEater)}</td>
         <td class="remove" data-dino-id="INSERT NUMBER">REMOVE</td>
       </tr>
     `;
-    // for age: let's make a helper function that creates today's date = new Date().getFullYear()
-    // for diet: let's make a helper function: carnivore, herbivore, omnivore
   });
-
 } 
+
+function getAge(year) {
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  return currentYear - year;
+}
+
+function getDiet(eatsMeat, eatsPlants){
+  if(eatsMeat && eatsPlants) {
+    return 'omnivore';
+  } else if(eatsMeat) {
+    return 'carnivore'
+  } else if(eatsPlants) {
+    return 'herbivore';
+  } else {
+    return 'unknown';
+  }
+}
 
 // TO DO Step 5: create a no-param function called renderStats()
 function renderStats(){
@@ -49,11 +64,13 @@ function renderStats(){
   document.querySelector('#num-carnivores').innerText = countCarnivores();
 
   // calculate the # of herbivores
+  document.querySelector('#num-herbivores').innerText = countHerbivores();
 
   // calculate the # of omnivores
+  document.querySelector('#num-omnivores').innerText = countOmnivores();
 
   // calculate the average age
-    // average = total sum / # of dinosaurs
+  document.querySelector('#avg-age').innerText = calculateAverageAge();
 
 }
 
@@ -62,6 +79,27 @@ function countCarnivores() {
   // eats meat but does not eat plants
   return dinos.filter( dino =>  dino.isMeatEater && !dino.isPlantEater ).length;
   // could have also used reduce()
+}
+
+function countHerbivores() {
+  // iterate through our array, counting the # of herbivores
+  return dinos.filter( dino =>  !dino.isMeatEater && dino.isPlantEater ).length;
+  // could have also used reduce()
+}
+
+function countOmnivores() {
+  // iterate through our array, counting the # of omnivores
+  return dinos.filter( dino =>  dino.isMeatEater && dino.isPlantEater ).length;
+  // could have also used reduce()
+}
+
+function calculateAverageAge(){
+  // average = total sum / # of dinosaurs
+  let sumOfAges = dinos.reduce((accumulator, dino) => 
+     accumulator + getAge(dino.birthYear)
+  , 0);
+
+  return sumOfAges / dinos.length;
 }
 
 const formElement = document.querySelector('#input-form');

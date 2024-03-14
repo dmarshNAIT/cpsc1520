@@ -50,7 +50,7 @@ formElement.addEventListener("submit", (event) => {
     formElement.querySelector(".error").classList.add("hide");
 
     let newDino = {
-      id: dinos.length,
+      id: dinos.length, /* TO DO: make sure ID is unique  */
       name: dinoName,
       species: dinoSpecies,
       birthYear: dinoYear,
