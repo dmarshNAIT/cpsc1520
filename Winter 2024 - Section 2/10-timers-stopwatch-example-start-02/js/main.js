@@ -7,7 +7,6 @@ const lapsElement = document.querySelector('.all-laps');
 
 // 2. add an event listener for the start button
 startButton.addEventListener('click', () => {
-    console.log('entering start button event handler....');
     // if the timer isn't already running, start it:
     if(!isStopWatchRunning) {
         startTimer();
@@ -32,12 +31,7 @@ function startTimer() {
     timerInterval = setInterval( () => {
         currentTime++;
         setTimerValue();
-
-        if(!isStopWatchRunning) {
-            clearInterval(timerInterval);
-        }
     }, TIME_INTERVAL);
-
 }
 
 // 5. create function named setTimerValue that will display the time on the page
@@ -48,9 +42,7 @@ function setTimerValue() {
 }
 
 function getPrettyTime (currentTime) {
-
     let numberOfSeconds = Math.floor(currentTime / 100).toString();
-
     let hundredths = (currentTime % 100).toString().padStart(2, '0');
 
     return numberOfSeconds + ':' + hundredths;
@@ -61,6 +53,7 @@ function getPrettyTime (currentTime) {
 //     - if you click start, the timer continues
 stopButton.addEventListener('click', () => {
     isStopWatchRunning = false;
+    clearInterval(timerInterval);
 });
 
 let lapNumber = 1;
@@ -71,20 +64,22 @@ let lastLapTime = 0;
 //          <li class="list-group-item">Lap CURRENT LAP: CURRENT LAP TIME</li>
 //     - increase the currentLap
 //     - add the lastLapTime
-lapButton.addEventListener('click', () => {
+function addLap() {
     let currentLapTime = currentTime - lastLapTime;
-
+    
     lapsElement.innerHTML += 
         `<li class="list-group-item">
             Lap ${lapNumber}: ${getPrettyTime(currentLapTime)}
         </li>`;
-
+    
     lapNumber++;
     lastLapTime = currentTime;
-});
+}
 
 // 8. in the add lap event listener, call the function above
-
+lapButton.addEventListener('click', () => {
+    addLap();
+});
 
 // BONUS CHALLENGE: add a yellow RESET button
 // OR: double-click stop to reset timer (e.g. using a counter variable)
