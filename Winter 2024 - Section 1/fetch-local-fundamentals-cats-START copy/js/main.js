@@ -16,7 +16,7 @@ Sample HTML
 */
 
 // Use the following list as a guide to complete the task:
-(function () {
+(async function () {
 // - select any requried elements from the document
 
 
@@ -24,13 +24,15 @@ Sample HTML
 //     - the function should accept a function parameter, that will be called 
 //       when the data has been resolved, and passed the array of fetched cats
 //       as a single argument
-function getCats(callbackFunction){
+async function getCats(){
   // make a request to fetch the local file
-  fetch('data/cats-with-jobs.json')
+  let response = await fetch('data/cats-with-jobs.json');
+
   // get the json contents
-  .then( (response) => response.json() )
-  // provide those contents to our callback function
-  .then( (catInfo) => callbackFunction(catInfo) );
+  let catInfo = await response.json();
+
+    // return those contents 
+  return catInfo;
 }
 
 // - create a renderCats function that will accept a single parameter, which
@@ -58,6 +60,6 @@ function renderCats(catArray){
 
 // - call the getCats function, and pass in the renderCats function as an argument
 //     - when the page loads, you should now see the cats rendered on the page
-getCats(renderCats);
+renderCats(await getCats());
 
 })();
