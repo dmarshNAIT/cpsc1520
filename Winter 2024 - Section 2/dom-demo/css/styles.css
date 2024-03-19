@@ -1,0 +1,11 @@
+body {
+    font-family: cursive;
+}
+
+div:first-of-type {
+    background-color: yellow;
+}
+
+div:last-of-type {
+    background-color: chartreuse;
+}

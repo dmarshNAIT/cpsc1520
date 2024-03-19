@@ -52,8 +52,27 @@ function getPrettyTime (currentTime) {
 //     - observe the page how the timer stops
 //     - if you click start, the timer continues
 stopButton.addEventListener('click', () => {
-    isStopWatchRunning = false;
-    clearInterval(timerInterval);
+    // if the timer is running:
+    if(isStopWatchRunning) {
+        isStopWatchRunning = false;
+        clearInterval(timerInterval);
+    }
+    else {
+        // if it's not running:
+        // reset the relevant variables
+        currentTime = 0;
+        lapNumber = 1;
+        lastLapTime = 0;
+        // clear out the timer
+        setTimerValue();
+        // clear out any laps
+        // option 1: innerHTML
+        // lapsElement.innerHTML = '';
+        // option 2: iterate thru the ul children, remove them
+        while(lapsElement.hasChildNodes()) {
+            lapsElement.children[0].remove();
+        }
+    }
 });
 
 let lapNumber = 1;
@@ -67,10 +86,22 @@ let lastLapTime = 0;
 function addLap() {
     let currentLapTime = currentTime - lastLapTime;
     
-    lapsElement.innerHTML += 
-        `<li class="list-group-item">
-            Lap ${lapNumber}: ${getPrettyTime(currentLapTime)}
-        </li>`;
+    // lapsElement.innerHTML += 
+    //     `<li class="list-group-item">
+    //         Lap ${lapNumber}: ${getPrettyTime(currentLapTime)}
+    //     </li>`;
+
+    // create a list item element
+    const liElement = document.createElement('li');
+    // add a class to that list-item
+    liElement.classList.add('list-group-item');
+    // create a text node
+    const liText = document
+    .createTextNode(`Lap ${lapNumber}: ${getPrettyTime(currentLapTime)}`);
+    // insert the text node into that new li
+    liElement.appendChild(liText);
+    // append that new li to our lapsElement
+    lapsElement.appendChild(liElement);
     
     lapNumber++;
     lastLapTime = currentTime;
