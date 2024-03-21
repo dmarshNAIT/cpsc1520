@@ -74,10 +74,22 @@ let lastLapTime = 0;
 function addLap() {
     let currentLapTime = currentTime - lastLapTime;
 
-    lapsElement.innerHTML += 
-        `<li class="list-group-item">
-            Lap ${currentLapNum}: ${getPrettyTime(currentLapTime)}
-        </li>`;
+    // lapsElement.innerHTML += 
+    //     `<li class="list-group-item">
+    //         Lap ${currentLapNum}: ${getPrettyTime(currentLapTime)}
+    //     </li>`;
+
+    // create a li element
+    let newLI = document.createElement('li');
+    // add a class to that li
+    newLI.classList.add('list-group-item');
+    // create a text node
+    let liText = document.createTextNode(
+        `Lap ${currentLapNum}: ${getPrettyTime(currentLapTime)}`
+    );
+    // add the text to the li, and the li to the DOM
+    newLI.appendChild(liText);
+    lapsElement.appendChild(newLI);
 
     currentLapNum++;
     lastLapTime = currentTime;
