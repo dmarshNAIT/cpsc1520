@@ -1,0 +1,20 @@
+{
+  "name": "npm-fundamentals-02",
+  "version": "1.0.0",
+  "description": "here is us doing cool things",
+  "main": "index.js",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "D Marsh & friends",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.2"
+  }
+}

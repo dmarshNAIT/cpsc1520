@@ -6,3 +6,7 @@ canvas {
 .container {
 	max-width: 600px;
 }
+
+body {
+	background-color: lightskyblue;
+}
