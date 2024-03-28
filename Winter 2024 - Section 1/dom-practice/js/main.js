@@ -26,6 +26,28 @@ function addTask(taskDescription){
     // add everything to the page
     newLI.appendChild(newButton);
     taskList.appendChild(newLI);
+
+    // v2: adding upvote/downvote functionality:
+    // add a paragraph that includes some text
+    const newP = document.createElement('p');
+    const pText = document.createTextNode('0');
+    newP.appendChild(pText);
+    newLI.appendChild(newP);
+
+    // add a button that includes some text and has the 'upvote' class applied
+    const newUpvote = document.createElement('button');
+    const upvoteText = document.createTextNode('upvote');
+    newUpvote.appendChild(upvoteText);
+    newUpvote.classList.add('upvote');
+    newLI.appendChild(newUpvote);
+
+    // add a button that includes some text and has the 'downvote' class applied
+    const newDownvote = document.createElement('button');
+    const downvoteText = document.createTextNode('downvote');
+    newDownvote.appendChild(downvoteText);
+    newDownvote.classList.add('downvote');
+    newLI.appendChild(newDownvote);
+
 }
 
 taskList.addEventListener('click', (event) => {
@@ -34,12 +56,14 @@ taskList.addEventListener('click', (event) => {
         // remove the parent of event.target
         event.target.parentElement.remove();
     }
+    // v3:
+    // otherwise if the thing I clicked on has "upvote"
+        // increase the number in the <p>
+
+    // otherwise, if I clicked on "downvote"
+        // decrease that number
 });
 
 // TO DO: finishing touches like focus & reset
-
-// v2: when we add the element, also add a count, upvote button, downvote button
-
-// v3: clicking upvote or downvote will adjust the count
 
 // challenge v4: after we upvote or downvote, move that item in the list
