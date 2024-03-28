@@ -1,0 +1,1 @@
+{"mappings":"AAAA;;;;;AAKA","sources":["css/main.css"],"sourcesContent":["canvas {\r\n\tmax-width:350px!important;\r\n\tmin-width: 350px!important;\r\n}\r\n\r\n.container {\r\n\tmax-width: 600px;\r\n\tbackground-color: lightblue;\r\n}"],"names":[],"version":3,"file":"index.c41b5a0e.css.map","sourceRoot":"/__parcel_source_root/"}

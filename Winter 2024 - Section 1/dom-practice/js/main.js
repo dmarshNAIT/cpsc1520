@@ -57,11 +57,16 @@ taskList.addEventListener('click', (event) => {
         event.target.parentElement.remove();
     }
     // v3:
-    // otherwise if the thing I clicked on has "upvote"
-        // increase the number in the <p>
-
-    // otherwise, if I clicked on "downvote"
-        // decrease that number
+    else if (event.target.classList.contains('upvote')) {
+        const pElement = event.target.previousElementSibling;
+        let currentCount = Number(pElement.textContent);
+        pElement.textContent = ++currentCount;
+    }
+    else if (event.target.classList.contains('downvote')) {
+        const pElement = event.target.previousElementSibling.previousElementSibling;
+        let currentCount = Number(pElement.textContent);
+        pElement.textContent = --currentCount;
+    }
 });
 
 // TO DO: finishing touches like focus & reset
