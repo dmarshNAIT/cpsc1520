@@ -1,17 +1,17 @@
-6517
+6519
 135C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\tslib\package.json133561354691554188 0
 143C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\chart.js\auto\package.json133561357718989259 0
 125C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\escalade133561354691678982 1
 156C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\caniuse-lite\data\features\autofocus.js133561354696658523 0
 156C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@popperjs\core\lib\modifiers\index.d.ts133561356889917664 0
-108C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist133561372861740319 1
+108C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist133561385737222210 1
 155C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\packager-js\src\DevPackager.js133561354691564130 0
 155C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\transformer-babel\src\utils.js133561354694353376 0
 150C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\type-fest\source\stringified.d.ts133561354696091962 0
 141C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\source-map\lib\base64.js133561354691514514 0
 158C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\source-map\dist\SourceMap.js.flow133561354689045652 0
 139C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\is-arrayish\.npmignore133561354688692162 0
-119C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.html133561370905791046 0
+119C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.html133561383507875144 0
 140C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\core\src\public133561354700756103 1
 127C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\micromatch133561354689775057 1
 151C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\caniuse-lite\data\features\heif.js133561354704033782 0
@@ -26,7 +26,7 @@
 159C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\css-tree\lib\tokenizer\OffsetToLocation.js133561354702016726 0
 162C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\esm\_class_private_method_get.js133561354699902948 0
 116C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules133561358276931514 1
-126C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.5d9dacde.js133561372347850063 0
+126C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.5d9dacde.js133561385737105792 0
 147C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\cache\lib\LMDBCache.js133561354692873527 0
 162C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\core\src\public\MutableBundleGraph.js133561354699379838 0
 148C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\caniuse-lite\data\regions\PM.js133561354706527899 0
@@ -51,7 +51,7 @@
 141C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\supports-color\readme.md133561354690448887 0
 146C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\type-fest\source\mutable.d.ts133561354694732736 0
 159C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_object_destructuring_empty133561354702920809 1
-106C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\js133561184550683988 1
+106C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\js133561379750461547 1
 136C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\get-port\index.d.ts133561354688823927 0
 172C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_class_private_field_update\package.json133561354702016726 0
 186C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\optimizer-svgo\node_modules\css-select\lib\procedure.d.ts.map133561354694599831 0
@@ -2566,6 +2566,7 @@
 145C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@parcel\workers\lib\types.js133561354696365767 0
 177C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\htmlnano\docs\versioned_docs\version-2.0.0\060-contribute.md133561354698200492 0
 157C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\caniuse-lite\data\features\css-shapes.js133561354701909165 0
+129C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\js\food-thoughts-chart.js133561379501898271 0
 173C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\htmlnano\docs\versioned_docs\version-1.1.1\030-config.md133561354697675783 0
 155C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\caniuse-lite\data\features\minmaxwh.js133561354705592916 0
 174C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\htmlnano\docs\versioned_docs\version-1.1.1\050-modules.md133561354697995300 0
@@ -4936,7 +4937,7 @@
 149C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_jsx\package.json133561354702847649 0
 169C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_iterable_to_array_limit\package.json133561354702802490 0
 163C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_iterable_to_array\package.json133561354702827648 0
-127C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.c41b5a0e.css133561372861680281 0
+127C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.c41b5a0e.css133561383508360521 0
 173C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_is_native_reflect_construct\package.json133561354702745851 0
 170C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_interop_require_wildcard\package.json133561354702705838 0
 160C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\@swc\helpers\_\_inherits_loose\package.json133561354702562585 0
@@ -6513,6 +6514,7 @@
 144C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\.bin\update-browserslist-db133561354709353351 0
 148C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\node_modules\.bin\update-browserslist-db.cmd133561354709343356 0
 114C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\js\food.js133561184550594172 0
-115C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\js\index.js133561372345789825 0
-130C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.5d9dacde.js.map133561372347880052 0
-131C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.c41b5a0e.css.map133561372861730325 0
+115C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\js\index.js133561385735891011 0
+126C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\js\food-times-chart.js133561380257539125 0
+131C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.c41b5a0e.css.map133561383508400702 0
+130C:\Users\DMARSH\OneDrive - NAIT\Documents 1\GitHub\cpsc1520\Winter 2024 - Section 2\npm-fundamentals-02\dist\index.5d9dacde.js.map133561385737192205 0
