@@ -1,0 +1,19 @@
+{
+  "name": "readit-fetch-npm-start",
+  "version": "1.0.0",
+  "description": "Getting practice using NPM.",
+  "main": "index.js",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Dana Marsh",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
