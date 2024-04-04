@@ -1,0 +1,19 @@
+{
+  "name": "readit-fetch-npm-start",
+  "version": "1.0.0",
+  "description": "let's do cool things",
+  "main": "index.js",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Dana Marsh",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
