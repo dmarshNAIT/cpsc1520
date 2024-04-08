@@ -619,8 +619,8 @@ Note: talk about REST Clients
 - Boomerang (https://boomerangapi.com/)
 - Postman (https://www.postman.com/)
 
-*/ // TO DO:
-// import getAllPosts
+*/ // import getAllPosts
+var _apiJs = require("./api.js");
 let allItems = document.querySelector(".readit-items");
 let readitForm = document.querySelector("#add-readit-item");
 // adding piece
@@ -636,6 +636,11 @@ readitForm.addEventListener("submit", (event)=>{
     title.value = "";
     url.value = "";
 });
+/**
+ * Adds a post to the page.
+ * @param {String} title   The title of the post
+ * @param {String} url     The URL of the post
+ */ // TO DO: add score as a param
 const addReaditItem = (title, url)=>{
     // create the card
     let card = document.createElement("div");
@@ -732,10 +737,65 @@ const downAnimation = (element)=>{
     setTimeout(()=>{
         element.classList.remove("down-fade");
     }, ANIMATION_LENGTH);
-} // TO DO:
- // call getAllPosts, and THEN
- // call addReaditItem() for each post
-;
+};
+// call getAllPosts, and THEN call addReaditItem() for each post
+console.log("calling get all posts...");
+(0, _apiJs.getAllPosts)().then((posts)=>{
+    // for each post: call addReadItItem()
+    posts.forEach((post)=>{
+        console.log(post);
+        addReaditItem(post.title, post.url);
+    });
+}); // 
+
+},{"./api.js":"6yDOL"}],"6yDOL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getAllPosts", ()=>getAllPosts);
+function getAllPosts() {
+    // fetch from that back end server
+    // http://localhost:3000/posts
+    let postData = fetch("http://localhost:3000/posts")// extract the json 
+    .then((response)=>{
+        console.log(response);
+        return response.json();
+    })// return the contents
+    .then((posts)=>{
+        console.log(posts);
+        return posts;
+    });
+    return postData;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}],"fvj34":[function() {},{}]},["fQFrJ","1Z4Rq"], "1Z4Rq", "parcelRequirec3a0")
 

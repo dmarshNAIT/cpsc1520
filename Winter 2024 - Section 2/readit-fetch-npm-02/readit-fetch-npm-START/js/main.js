@@ -27,8 +27,8 @@ Note: talk about REST Clients
 
 */
 
-// TO DO:
 // import getAllPosts
+import { getAllPosts } from "./api.js";
 
 let allItems = document.querySelector(".readit-items")
 
@@ -48,6 +48,12 @@ readitForm.addEventListener("submit", (event)=> {
     url.value = ""
 })
 
+/**
+ * Adds a post to the page.
+ * @param {String} title   The title of the post
+ * @param {String} url     The URL of the post
+ */
+// TO DO: add score as a param
 const addReaditItem = (title, url)=> {
     // create the card
     let card = document.createElement("div")
@@ -167,6 +173,19 @@ const downAnimation = (element) => {
 }
 
 
-// TO DO:
-// call getAllPosts, and THEN
-// call addReaditItem() for each post
+
+// call getAllPosts, and THEN call addReaditItem() for each post
+console.log('calling get all posts...');
+getAllPosts()
+    .then((posts) => {
+        
+        // for each post: call addReadItItem()
+        posts.forEach( (post) => {
+            console.log(post)
+            addReaditItem(post.title, post.url);
+        });
+
+
+    });
+
+// 

@@ -27,9 +27,6 @@ Note: talk about REST Clients
 
 */
 
-// import getAllPosts from the api.js file
-import { getAllPosts } from "./api";
-
 let allItems = document.querySelector(".readit-items")
 
 let readitForm = document.querySelector("#add-readit-item")
@@ -165,12 +162,3 @@ const downAnimation = (element) => {
         element.classList.remove("down-fade")
     }, ANIMATION_LENGTH)
 }
-
-
-getAllPosts().then( (posts) => {
-    // loop through each post, and add it to the page
-    // using addReaditItem()
-    posts.forEach( (post) => {
-        addReaditItem(post.title, post.url);
-    });
-});

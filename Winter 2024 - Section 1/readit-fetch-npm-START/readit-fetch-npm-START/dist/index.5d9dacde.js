@@ -620,7 +620,8 @@ Note: talk about REST Clients
 - Boomerang (https://boomerangapi.com/)
 - Postman (https://www.postman.com/)
 
-*/ // TO DO: import getAllPosts from the api.js file
+*/ // import getAllPosts from the api.js file
+var _api = require("./api");
 let allItems = document.querySelector(".readit-items");
 let readitForm = document.querySelector("#add-readit-item");
 // adding piece
@@ -732,11 +733,92 @@ const downAnimation = (element)=>{
     setTimeout(()=>{
         element.classList.remove("down-fade");
     }, ANIMATION_LENGTH);
-} // TO DO: 
- // call getAllPosts()
- // then, loop through each post, and add it to the page
- // using addReaditItem()
-;
+};
+(0, _api.getAllPosts)().then((posts)=>{
+    // loop through each post, and add it to the page
+    // using addReaditItem()
+    posts.forEach((post)=>{
+        addReaditItem(post.title, post.url);
+    });
+});
+
+},{"./api":"6yDOL"}],"6yDOL":[function(require,module,exports) {
+// where we do our API calls
+// create a function called getAllPosts()
+// this will fetch data from the backend server
+// http://localhost:3000/posts
+// return the contents of the json
+/**
+ * Fetches post data from a hardcoded back-end server
+ * @returns {Object} contents of the db.json posts array
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+// TO DO: 
+// create posts
+// fetch will still have posts as the first arg, and the following will be the 2nd argument:
+// {
+//     method: 'POST',
+//     headers: { // headers help specify more information that the server needs.
+//       "Content-Type": "application/json" 
+//     }, // above this just means that we're saying "we're sending json" so the server understands.
+//     body: JSON.stringify({title, url, score})
+//   }
+// patch posts
+// the 2nd argument will be:
+// {
+//     method: 'PATCH',
+//     headers: { 
+//       "Content-Type": "application/json" 
+//     }, 
+//     body: JSON.stringify({
+//       score: score
+//     })
+//  }
+// export getAllPosts
+parcelHelpers.export(exports, "getAllPosts", ()=>getAllPosts);
+function getAllPosts() {
+    // fetch from the backend
+    let result = fetch("http://localhost:3000/posts")// parse the JSON
+    .then((response)=>{
+        console.log(response);
+        return response.json();
+    })// return its contents
+    .then((postData)=>{
+        console.log(postData);
+        return postData;
+    });
+    return result;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["fQFrJ","1Z4Rq"], "1Z4Rq", "parcelRequirec3a0")
 
