@@ -17,4 +17,8 @@ function getAllPosts() {
 }
 
 
+// TO DO: create post function
+
+// TO DO: create patch function
+
 export { getAllPosts }

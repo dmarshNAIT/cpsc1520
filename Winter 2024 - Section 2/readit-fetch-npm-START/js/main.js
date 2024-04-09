@@ -27,8 +27,8 @@ Note: talk about REST Clients
 
 */
 
-// import getAllPosts from the api.js file
-import { getAllPosts } from "./api";
+// import getAllPosts
+import { getAllPosts } from "./api.js";
 
 let allItems = document.querySelector(".readit-items")
 
@@ -43,11 +43,19 @@ readitForm.addEventListener("submit", (event)=> {
     console.log(title.value)
     console.log(url.value)
     addReaditItem(title.value, url.value)
+    // TO DO: call createNewPost()
     // reset elements
     title.value = ""
     url.value = ""
 })
 
+/**
+ * Adds a post to the page.
+ * @param {String} title   The title of the post
+ * @param {String} url     The URL of the post
+ */
+// TO DO: add score as a param
+// TO DO: add id as a param
 const addReaditItem = (title, url)=> {
     // create the card
     let card = document.createElement("div")
@@ -62,7 +70,8 @@ const addReaditItem = (title, url)=> {
     // create score
     let score = document.createElement("p")
     score.classList.add("score", "h4", "m-2")
-    score.textContent = '0'
+    score.textContent = '0' 
+    // TO DO: remove hardcoded score
     // create down button
     let downButton = document.createElement("button")
     downButton.classList.add("btn", "vote-down", "m-1", "btn-secondary")
@@ -114,6 +123,7 @@ const voteDown = (buttonElement)=> {
 const changeScore = (scoreElement, value) => {
     let currentScore = parseInt(scoreElement.textContent)
     scoreElement.textContent = currentScore + value
+    // TO DO: call updateScore() function
 }
 
 const changeItemOrder = (cardBodyElement) => {
@@ -167,10 +177,19 @@ const downAnimation = (element) => {
 }
 
 
-getAllPosts().then( (posts) => {
-    // loop through each post, and add it to the page
-    // using addReaditItem()
-    posts.forEach( (post) => {
-        addReaditItem(post.title, post.url);
+
+// call getAllPosts, and THEN call addReaditItem() for each post
+console.log('calling get all posts...');
+getAllPosts()
+    .then((posts) => {
+        
+        // for each post: call addReadItItem()
+        posts.forEach( (post) => {
+            console.log(post)
+            addReaditItem(post.title, post.url);
+        });
+
+
     });
-});
+
+// 

@@ -632,6 +632,7 @@ readitForm.addEventListener("submit", (event)=>{
     console.log(title.value);
     console.log(url.value);
     addReaditItem(title.value, url.value);
+    // TO DO: call createNewPost()
     // reset elements
     title.value = "";
     url.value = "";
@@ -641,6 +642,7 @@ readitForm.addEventListener("submit", (event)=>{
  * @param {String} title   The title of the post
  * @param {String} url     The URL of the post
  */ // TO DO: add score as a param
+// TO DO: add id as a param
 const addReaditItem = (title, url)=>{
     // create the card
     let card = document.createElement("div");
@@ -657,6 +659,7 @@ const addReaditItem = (title, url)=>{
     let score = document.createElement("p");
     score.classList.add("score", "h4", "m-2");
     score.textContent = "0";
+    // TO DO: remove hardcoded score
     // create down button
     let downButton = document.createElement("button");
     downButton.classList.add("btn", "vote-down", "m-1", "btn-secondary");
@@ -700,6 +703,7 @@ const voteDown = (buttonElement)=>{
 const changeScore = (scoreElement, value)=>{
     let currentScore = parseInt(scoreElement.textContent);
     scoreElement.textContent = currentScore + value;
+// TO DO: call updateScore() function
 };
 const changeItemOrder = (cardBodyElement)=>{
     // below gets the parent of element with "card-body"
@@ -751,6 +755,8 @@ console.log("calling get all posts...");
 },{"./api.js":"6yDOL"}],"6yDOL":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+// TO DO: create post function
+// TO DO: create patch function
 parcelHelpers.export(exports, "getAllPosts", ()=>getAllPosts);
 function getAllPosts() {
     // fetch from that back end server

@@ -36,6 +36,7 @@ function getAllPosts() {
 //     }, // above this just means that we're saying "we're sending json" so the server understands.
 //     body: JSON.stringify({title, url, score})
 //   }
+
 // patch posts
 // the 2nd argument will be:
 // {

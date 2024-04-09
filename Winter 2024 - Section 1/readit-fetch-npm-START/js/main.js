@@ -27,6 +27,9 @@ Note: talk about REST Clients
 
 */
 
+// import getAllPosts from the api.js file
+import { getAllPosts } from "./api";
+
 let allItems = document.querySelector(".readit-items")
 
 let readitForm = document.querySelector("#add-readit-item")
@@ -40,11 +43,14 @@ readitForm.addEventListener("submit", (event)=> {
     console.log(title.value)
     console.log(url.value)
     addReaditItem(title.value, url.value)
+    // TO DO: call createNewPost()
     // reset elements
     title.value = ""
     url.value = ""
 })
 
+// TO DO: add score 
+// TO DO: add id
 const addReaditItem = (title, url)=> {
     // create the card
     let card = document.createElement("div")
@@ -59,6 +65,7 @@ const addReaditItem = (title, url)=> {
     // create score
     let score = document.createElement("p")
     score.classList.add("score", "h4", "m-2")
+    // TO DO: remove hardcoded score
     score.textContent = '0'
     // create down button
     let downButton = document.createElement("button")
@@ -111,6 +118,7 @@ const voteDown = (buttonElement)=> {
 const changeScore = (scoreElement, value) => {
     let currentScore = parseInt(scoreElement.textContent)
     scoreElement.textContent = currentScore + value
+    // TO DO : call patch function
 }
 
 const changeItemOrder = (cardBodyElement) => {
@@ -162,3 +170,12 @@ const downAnimation = (element) => {
         element.classList.remove("down-fade")
     }, ANIMATION_LENGTH)
 }
+
+
+getAllPosts().then( (posts) => {
+    // loop through each post, and add it to the page
+    // using addReaditItem()
+    posts.forEach( (post) => {
+        addReaditItem(post.title, post.url);
+    });
+});
