@@ -28,7 +28,7 @@ Note: talk about REST Clients
 */
 
 // import getAllPosts
-import { getAllPosts } from "./api.js";
+import { getAllPosts, createNewPost, updateScore } from "./api.js";
 
 let allItems = document.querySelector(".readit-items")
 
@@ -42,8 +42,13 @@ readitForm.addEventListener("submit", (event)=> {
     let url = form.elements["item-url"]
     console.log(title.value)
     console.log(url.value)
-    addReaditItem(title.value, url.value)
-    // TO DO: call createNewPost()
+
+    createNewPost({title: title.value, url: url.value, score: 0})
+    .then( (post) => {
+        addReaditItem(post.title, post.url, post.score, post.id)
+    });
+
+
     // reset elements
     title.value = ""
     url.value = ""
@@ -53,13 +58,14 @@ readitForm.addEventListener("submit", (event)=> {
  * Adds a post to the page.
  * @param {String} title   The title of the post
  * @param {String} url     The URL of the post
+ * @param {Number} score    The current score of the post
+ * @param {Number} id       The ID # of the post
  */
-// TO DO: add score as a param
-// TO DO: add id as a param
-const addReaditItem = (title, url)=> {
+const addReaditItem = (title, url, score, id)=> {
     // create the card
     let card = document.createElement("div")
     card.classList.add("card", "mt-2") // adds both classes
+    card.setAttribute('post-id', id);
     //create card body
     let cardBody = document.createElement("div")
     cardBody.classList.add("card-body", "d-flex", "flex-row")
@@ -68,10 +74,14 @@ const addReaditItem = (title, url)=> {
     upButton.classList.add("btn", "vote-up", "m-1", "btn-secondary")
     upButton.textContent = "up"
     // create score
-    let score = document.createElement("p")
-    score.classList.add("score", "h4", "m-2")
-    score.textContent = '0' 
-    // TO DO: remove hardcoded score
+    let scoreElement = document.createElement("p")
+    scoreElement.classList.add("score", "h4", "m-2")
+    if (score) {
+        scoreElement.textContent = score;
+    } else
+    {
+        scoreElement.textContent = '0' 
+    }
     // create down button
     let downButton = document.createElement("button")
     downButton.classList.add("btn", "vote-down", "m-1", "btn-secondary")
@@ -81,12 +91,12 @@ const addReaditItem = (title, url)=> {
     newLink.classList.add("h4", "m-2")
     newLink.setAttribute("href", url)
     newLink.textContent = title
-    console.log(newLink)
+    // console.log(newLink)
    
     // patch altogether
     card.appendChild(cardBody)
     cardBody.appendChild(upButton)
-    cardBody.appendChild(score)
+    cardBody.appendChild(scoreElement)
     cardBody.appendChild(downButton)
     cardBody.appendChild(newLink)
 
@@ -122,8 +132,16 @@ const voteDown = (buttonElement)=> {
 
 const changeScore = (scoreElement, value) => {
     let currentScore = parseInt(scoreElement.textContent)
-    scoreElement.textContent = currentScore + value
-    // TO DO: call updateScore() function
+    let newScore = currentScore + value;
+
+    let postID = scoreElement.parentNode.parentNode.getAttribute('post-id');
+    console.log(postID)
+
+    updateScore({id: postID, score: newScore})
+    .then( (post) => {
+        scoreElement.textContent = newScore;
+    });
+
 }
 
 const changeItemOrder = (cardBodyElement) => {
@@ -179,14 +197,14 @@ const downAnimation = (element) => {
 
 
 // call getAllPosts, and THEN call addReaditItem() for each post
-console.log('calling get all posts...');
+// console.log('calling get all posts...');
 getAllPosts()
     .then((posts) => {
         
         // for each post: call addReadItItem()
         posts.forEach( (post) => {
-            console.log(post)
-            addReaditItem(post.title, post.url);
+            // console.log(post)
+            addReaditItem(post.title, post.url, post.score, post.id);
         });
 
 

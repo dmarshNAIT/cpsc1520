@@ -16,13 +16,19 @@
       "id": 3,
       "title": "Dev Edmonton meetups",
       "url": "https://devedmonton.com/#meetups",
-      "score": 11
+      "score": 14
     },
     {
       "id": 4,
       "title": "Pycon US Conference talk links",
       "url": "https://www.youtube.com/c/PyConUS",
-      "score": 13
+      "score": 20
+    },
+    {
+      "title": "curiousity killed the cat",
+      "url": "http://darkweb.com",
+      "score": 19,
+      "id": 5
     }
   ]
 }
