@@ -23,6 +23,12 @@
       "title": "Pycon US Conference talk links",
       "url": "https://www.youtube.com/c/PyConUS",
       "score": 13
+    },
+    {
+      "title": "moodle",
+      "url": "http://moodle.nait.ca",
+      "score": -1,
+      "id": 5
     }
   ]
 }

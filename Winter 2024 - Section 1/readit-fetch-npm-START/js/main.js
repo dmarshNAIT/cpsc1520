@@ -28,33 +28,38 @@ Note: talk about REST Clients
 */
 
 // import getAllPosts from the api.js file
-import { getAllPosts } from "./api";
+import { getAllPosts, createNewPost, updateScore } from "./api";
 
 let allItems = document.querySelector(".readit-items")
 
 let readitForm = document.querySelector("#add-readit-item")
 
 // adding piece
-readitForm.addEventListener("submit", (event)=> {
+readitForm.addEventListener("submit", (event) => {
     event.preventDefault()
     let form = event.target
     let title = form.elements["title"]
     let url = form.elements["item-url"]
     console.log(title.value)
     console.log(url.value)
-    addReaditItem(title.value, url.value)
-    // TO DO: call createNewPost()
+
+    createNewPost({title: title.value, url: url.value, score: 0})
+    .then( (post) => {
+        addReaditItem(post.title, post.url, post.score, post.id)
+    });
+
     // reset elements
     title.value = ""
     url.value = ""
 })
 
-// TO DO: add score 
-// TO DO: add id
-const addReaditItem = (title, url)=> {
+
+const addReaditItem = (title, url, score, id) => {
     // create the card
     let card = document.createElement("div")
     card.classList.add("card", "mt-2") // adds both classes
+    card.setAttribute('post-id', id);
+    console.log(card);
     //create card body
     let cardBody = document.createElement("div")
     cardBody.classList.add("card-body", "d-flex", "flex-row")
@@ -63,10 +68,15 @@ const addReaditItem = (title, url)=> {
     upButton.classList.add("btn", "vote-up", "m-1", "btn-secondary")
     upButton.textContent = "up"
     // create score
-    let score = document.createElement("p")
-    score.classList.add("score", "h4", "m-2")
-    // TO DO: remove hardcoded score
-    score.textContent = '0'
+    let scoreElement = document.createElement("p")
+    scoreElement.classList.add("score", "h4", "m-2")
+    if (score) { 
+        scoreElement.textContent = score; 
+    }
+    else { 
+        scoreElement.textContent = '0'; 
+    }
+
     // create down button
     let downButton = document.createElement("button")
     downButton.classList.add("btn", "vote-down", "m-1", "btn-secondary")
@@ -76,12 +86,11 @@ const addReaditItem = (title, url)=> {
     newLink.classList.add("h4", "m-2")
     newLink.setAttribute("href", url)
     newLink.textContent = title
-    console.log(newLink)
-   
+
     // patch altogether
     card.appendChild(cardBody)
     cardBody.appendChild(upButton)
-    cardBody.appendChild(score)
+    cardBody.appendChild(scoreElement)
     cardBody.appendChild(downButton)
     cardBody.appendChild(newLink)
 
@@ -90,9 +99,9 @@ const addReaditItem = (title, url)=> {
 }
 
 // Ranking Piece
-allItems.addEventListener("click", (event)=> {
+allItems.addEventListener("click", (event) => {
     let element = event.target
-    
+
     if (element.classList.contains("vote-up")) {
         voteUp(element)
     } else if (element.classList.contains("vote-down")) {
@@ -108,7 +117,7 @@ const voteUp = (buttonElement) => {
     changeItemOrder(cardBodyElement)
 }
 
-const voteDown = (buttonElement)=> {
+const voteDown = (buttonElement) => {
     let cardBodyElement = buttonElement.parentNode
     let scoreElement = cardBodyElement.children[1] // the second element
     changeScore(scoreElement, -1)
@@ -117,8 +126,12 @@ const voteDown = (buttonElement)=> {
 
 const changeScore = (scoreElement, value) => {
     let currentScore = parseInt(scoreElement.textContent)
-    scoreElement.textContent = currentScore + value
-    // TO DO : call patch function
+    let newScore = currentScore + value;
+    let id = scoreElement.parentNode.parentNode.getAttribute('post-id');
+    updateScore({id: id, score: newScore})
+    .then( (post) => {
+        scoreElement.textContent = newScore;
+    });
 }
 
 const changeItemOrder = (cardBodyElement) => {
@@ -133,7 +146,7 @@ const changeItemOrder = (cardBodyElement) => {
     if (upperCardElement) {
         swapItemsIfNecessary(upperCardElement, cardElement)
     }
-    
+
     if (lowerCardElement) {
         swapItemsIfNecessary(cardElement, lowerCardElement)
     }
@@ -148,7 +161,7 @@ const swapItemsIfNecessary = (topCardElement, bottomCardElement) => {
         let cardListElement = topCardElement.parentNode
         console.log(cardListElement)
         cardListElement.insertBefore(bottomCardElement, topCardElement)
-        
+
         upAnimation(bottomCardElement)
         downAnimation(topCardElement)
     }
@@ -159,23 +172,23 @@ const ANIMATION_LENGTH = 1000
 
 const upAnimation = (element) => {
     element.classList.add("up-fade")
-    setTimeout(()=> {
+    setTimeout(() => {
         element.classList.remove("up-fade")
     }, ANIMATION_LENGTH)
 }
 
 const downAnimation = (element) => {
     element.classList.add("down-fade")
-    setTimeout(()=> {
+    setTimeout(() => {
         element.classList.remove("down-fade")
     }, ANIMATION_LENGTH)
 }
 
 
-getAllPosts().then( (posts) => {
+getAllPosts().then((posts) => {
     // loop through each post, and add it to the page
     // using addReaditItem()
-    posts.forEach( (post) => {
-        addReaditItem(post.title, post.url);
+    posts.forEach((post) => {
+        addReaditItem(post.title, post.url, post.score, post.id);
     });
 });

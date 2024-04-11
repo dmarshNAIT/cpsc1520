@@ -632,16 +632,24 @@ readitForm.addEventListener("submit", (event)=>{
     let url = form.elements["item-url"];
     console.log(title.value);
     console.log(url.value);
-    addReaditItem(title.value, url.value);
+    (0, _api.createNewPost)({
+        title: title.value,
+        url: url.value,
+        score: 0
+    }).then((post)=>{
+        addReaditItem(post.title, post.url, post.score, post.id);
+    });
     // reset elements
     title.value = "";
     url.value = "";
 });
-const addReaditItem = (title, url)=>{
+const addReaditItem = (title, url, score, id)=>{
     // create the card
     let card = document.createElement("div");
     card.classList.add("card", "mt-2") // adds both classes
     ;
+    card.setAttribute("post-id", id);
+    console.log(card);
     //create card body
     let cardBody = document.createElement("div");
     cardBody.classList.add("card-body", "d-flex", "flex-row");
@@ -650,9 +658,10 @@ const addReaditItem = (title, url)=>{
     upButton.classList.add("btn", "vote-up", "m-1", "btn-secondary");
     upButton.textContent = "up";
     // create score
-    let score = document.createElement("p");
-    score.classList.add("score", "h4", "m-2");
-    score.textContent = "0";
+    let scoreElement = document.createElement("p");
+    scoreElement.classList.add("score", "h4", "m-2");
+    if (score) scoreElement.textContent = score;
+    else scoreElement.textContent = "0";
     // create down button
     let downButton = document.createElement("button");
     downButton.classList.add("btn", "vote-down", "m-1", "btn-secondary");
@@ -662,11 +671,10 @@ const addReaditItem = (title, url)=>{
     newLink.classList.add("h4", "m-2");
     newLink.setAttribute("href", url);
     newLink.textContent = title;
-    console.log(newLink);
     // patch altogether
     card.appendChild(cardBody);
     cardBody.appendChild(upButton);
-    cardBody.appendChild(score);
+    cardBody.appendChild(scoreElement);
     cardBody.appendChild(downButton);
     cardBody.appendChild(newLink);
     // append to list
@@ -695,7 +703,14 @@ const voteDown = (buttonElement)=>{
 };
 const changeScore = (scoreElement, value)=>{
     let currentScore = parseInt(scoreElement.textContent);
-    scoreElement.textContent = currentScore + value;
+    let newScore = currentScore + value;
+    let id = scoreElement.parentNode.parentNode.getAttribute("post-id");
+    (0, _api.updateScore)({
+        id: id,
+        score: newScore
+    }).then((post)=>{
+        scoreElement.textContent = newScore;
+    });
 };
 const changeItemOrder = (cardBodyElement)=>{
     // below gets the parent of element with "card-body"
@@ -738,7 +753,7 @@ const downAnimation = (element)=>{
     // loop through each post, and add it to the page
     // using addReaditItem()
     posts.forEach((post)=>{
-        addReaditItem(post.title, post.url);
+        addReaditItem(post.title, post.url, post.score, post.id);
     });
 });
 
@@ -753,29 +768,10 @@ const downAnimation = (element)=>{
  * @returns {Object} contents of the db.json posts array
  */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// TO DO: 
-// create posts
-// fetch will still have posts as the first arg, and the following will be the 2nd argument:
-// {
-//     method: 'POST',
-//     headers: { // headers help specify more information that the server needs.
-//       "Content-Type": "application/json" 
-//     }, // above this just means that we're saying "we're sending json" so the server understands.
-//     body: JSON.stringify({title, url, score})
-//   }
-// patch posts
-// the 2nd argument will be:
-// {
-//     method: 'PATCH',
-//     headers: { 
-//       "Content-Type": "application/json" 
-//     }, 
-//     body: JSON.stringify({
-//       score: score
-//     })
-//  }
 // export getAllPosts
 parcelHelpers.export(exports, "getAllPosts", ()=>getAllPosts);
+parcelHelpers.export(exports, "createNewPost", ()=>createNewPost);
+parcelHelpers.export(exports, "updateScore", ()=>updateScore);
 function getAllPosts() {
     // fetch from the backend
     let result = fetch("http://localhost:3000/posts")// parse the JSON
@@ -785,6 +781,40 @@ function getAllPosts() {
     })// return its contents
     .then((postData)=>{
         console.log(postData);
+        return postData;
+    });
+    return result;
+}
+function createNewPost({ title, url, score }) {
+    let result = fetch("http://localhost:3000/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title,
+            url,
+            score
+        })
+    }).then((response)=>{
+        return response.json();
+    }).then((postData)=>{
+        return postData;
+    });
+    return result;
+}
+function updateScore({ id, score }) {
+    let result = fetch(`http://localhost:3000/posts/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            score: score
+        })
+    }).then((response)=>{
+        return response.json();
+    }).then((postData)=>{
         return postData;
     });
     return result;

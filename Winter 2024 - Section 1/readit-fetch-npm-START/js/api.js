@@ -26,29 +26,37 @@ function getAllPosts() {
     return result;
 }
 
-// TO DO: 
-// create posts
-// fetch will still have posts as the first arg, and the following will be the 2nd argument:
-// {
-//     method: 'POST',
-//     headers: { // headers help specify more information that the server needs.
-//       "Content-Type": "application/json" 
-//     }, // above this just means that we're saying "we're sending json" so the server understands.
-//     body: JSON.stringify({title, url, score})
-//   }
+function createNewPost({title, url, score}){
+    let result = fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({title, url, score})
+      })
+    .then( (response) => {
+        return response.json();
+    })
+    .then( (postData) => {
+        return postData;
+    });
+    return result;
+}
 
-// patch posts
-// the 2nd argument will be:
-// {
-//     method: 'PATCH',
-//     headers: { 
-//       "Content-Type": "application/json" 
-//     }, 
-//     body: JSON.stringify({
-//       score: score
-//     })
-//  }
+function updateScore({id, score}){
+    let result = fetch(`http://localhost:3000/posts/${id}`, {
+        method: 'PATCH',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({score: score})
+      })
+    .then( (response) => {
+        return response.json();
+    })
+    .then( (postData) => {
+        return postData;
+    });
+    return result;
+}
+
 
 
 // export getAllPosts
-export { getAllPosts };
+export { getAllPosts, createNewPost, updateScore };
