@@ -17,17 +17,24 @@ they're going to get removed from the screen.
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../css/main.css'
-import {Balloon} from './utils/balloon.js';
-const balloons = document.querySelector('.balloons');
 
-for(let i = 0; i < 20; i++) {
-    let newBalloon = new Balloon();
-    balloons.appendChild(newBalloon.element);
+import {Balloon} from './utils/balloon.js'
+
+let allBalloons = document.querySelector('.balloons');
+console.log(allBalloons)
+
+function addBalloons() {
+    for(i=0; i<10; i++) {
+        let newB = new Balloon();
+        newB.addToElement(allBalloons);
+        console.log(newB.element.style.maxHeight)
+    }
 }
 
+addBalloons();
+
 document.addEventListener('click', (event) => {
-    // if the thing I clicked on is a balloon, remove the balloon
-    if (event.target.classList.contains('single-balloon')) {
+    if(event.target.classList.contains('single-balloon')) {
         event.target.remove();
     }
-});
+})
