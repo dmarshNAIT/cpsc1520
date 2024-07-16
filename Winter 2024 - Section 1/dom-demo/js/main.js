@@ -27,7 +27,7 @@ div1.insertBefore(p6, catsElement);
 // remove element p4
 // you are not allowed to use querySelector
 // you are not allowed to use div1, div2, or p6 variables
-p5.parentNode.nextElementSibling.firstElementChild.remove();
+// p5.parentNode.nextElementSibling.firstElementChild.remove();
 
 // extra challenge: go thru every element exactly 1 time
 // let p4 = p5
