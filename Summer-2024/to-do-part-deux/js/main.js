@@ -10,6 +10,8 @@ formElement.addEventListener('submit', (event) => {
     formElement.reset();
 });
 
+const taskListElement = document.querySelector('#task-list');
+
 function addTask(taskDescription) {
     // add a new list item, including a 'remove' button
     const newLI = document.createElement('li');
@@ -18,15 +20,22 @@ function addTask(taskDescription) {
 
     const removeButton = document.createElement('button');
     const buttonText = document.createTextNode('remove');
+    removeButton.classList.add('remove');
     removeButton.appendChild(buttonText);
     newLI.appendChild(removeButton);
 
-    document.querySelector('#task-list').appendChild(newLI);
+    taskListElement.appendChild(newLI);
 }
 
 // create an event listener that is listening for clicks on the 'remove' button
 // when clicked, that item will be removed from the task list
-
+taskListElement.addEventListener('click', (event) => {
+    // if the event.target has the 'remove' class
+    if(event.target.classList.contains('remove')) {
+        // then we remove its parent
+        event.target.parentElement.remove();
+    }
+});
 
 
 // v2: add upvote & downvote buttons
