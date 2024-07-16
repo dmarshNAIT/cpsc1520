@@ -25,6 +25,10 @@ function addTask(taskDescription) {
     newLI.appendChild(removeButton);
 
     taskListElement.appendChild(newLI);
+
+    // TO DO: create a span with a starting value of 0
+    // TO DO: create an upvote button, which contains text and a 'upvote' class
+    // TO DO: create a downvote button, which contains text and a 'downvote' class 
 }
 
 // create an event listener that is listening for clicks on the 'remove' button
@@ -35,6 +39,11 @@ taskListElement.addEventListener('click', (event) => {
         // then we remove its parent
         event.target.parentElement.remove();
     }
+    // TO DO: otherwise, if it's an upvote:
+    // +1 to the span value
+
+    // TO DO: otherwise, if it's a downvote:
+    // -1 to the span value
 });
 
 
