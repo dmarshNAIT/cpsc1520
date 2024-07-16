@@ -22,4 +22,17 @@ fMovieElement.appendChild(fMovieText);
 const cMovieElement = eMovieElement.previousElementSibling;
 firstDivElement.insertBefore(fMovieElement, cMovieElement);
 
-// remove some elements 
+// let's now remove Dune without creating any new variables
+// cMovieElement.parentNode.nextElementSibling.firstElementChild.remove();
+
+// and here's the same thing taking the longest possible route (hitting every element once)
+eMovieElement
+    .previousElementSibling
+    .previousElementSibling
+    .previousElementSibling
+    .previousElementSibling
+    .parentNode
+    .parentNode
+    .children[1] // access the div at index 1, AKA the 2nd div
+    .lastElementChild
+    .remove();
