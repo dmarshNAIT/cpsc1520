@@ -20,15 +20,29 @@ function addTask(taskDescription) {
 
     const removeButton = document.createElement('button');
     const buttonText = document.createTextNode('remove');
-    removeButton.classList.add('remove');
     removeButton.appendChild(buttonText);
+    removeButton.classList.add('remove');
     newLI.appendChild(removeButton);
 
     taskListElement.appendChild(newLI);
 
-    // TO DO: create a span with a starting value of 0
-    // TO DO: create an upvote button, which contains text and a 'upvote' class
-    // TO DO: create a downvote button, which contains text and a 'downvote' class 
+    // v2: adding upvote/downvote functionality
+    const voteCountElement = document.createElement('span');
+    const voteCount = document.createTextNode('0');
+    voteCountElement.appendChild(voteCount);
+    newLI.appendChild(voteCountElement);
+
+    const upvoteButton = document.createElement('button');
+    const upvoteText = document.createTextNode('upvote');
+    upvoteButton.appendChild(upvoteText);
+    upvoteButton.classList.add('upvote');
+    newLI.appendChild(upvoteButton);
+
+    const downvoteButton = document.createElement('button');
+    const downvoteText = document.createTextNode('downvote');
+    downvoteButton.appendChild(downvoteText);
+    downvoteButton.classList.add('downvote');
+    newLI.appendChild(downvoteButton);
 }
 
 // create an event listener that is listening for clicks on the 'remove' button
@@ -39,14 +53,19 @@ taskListElement.addEventListener('click', (event) => {
         // then we remove its parent
         event.target.parentElement.remove();
     }
-    // TO DO: otherwise, if it's an upvote:
-    // +1 to the span value
-
-    // TO DO: otherwise, if it's a downvote:
-    // -1 to the span value
+    else if (event.target.classList.contains('upvote')) {
+        let spanElement = event.target.previousElementSibling;
+        let count = parseInt(spanElement.textContent);
+        spanElement.textContent = count + 1;
+    }
+    else if (event.target.classList.contains('downvote')) {
+        let spanElement = event.target.previousElementSibling.previousElementSibling;
+        let count = Number(spanElement.textContent);
+        spanElement.textContent = count - 1;
+    }
 });
 
 
-// v2: add upvote & downvote buttons
 
-// TO DO: final version finishing touches: reset, focus
+// CHALLENGE TO DO:
+// as items are up or downvoted, move them up/down in the list
