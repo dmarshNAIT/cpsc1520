@@ -4,7 +4,7 @@ console.log('welcome, developers');
 let typoElement = document.querySelector('#update-text p');
 typoElement.innerText = 'Correct the typos in this text.';
 
-// TO DO: add <strong> tags
+// add <strong> tags
 let strongElement = document.querySelector('#update-html p');
 let elementText = strongElement.innerText;
 strongElement.innerHTML = '<strong>' + elementText + '</strong>';
