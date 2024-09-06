@@ -15,5 +15,12 @@ colourElement.style.color = 'blue';
 
 // YOUR CHALLENGES:
 // first: change the first p to be italicized <i>
+let iText = typoElement.innerText;
+typoElement.innerHTML = '<i>' + iText + '</i>';
+// thank you, Haoyu!
+
 // 2: change the 2nd p to be any colour that isn't blue or black
+strongElement.style.color = 'orange';
+ // thank you, Sam
+
 // BONUS challenge: can you identify an element where the innerText and the innerHTML are different?
