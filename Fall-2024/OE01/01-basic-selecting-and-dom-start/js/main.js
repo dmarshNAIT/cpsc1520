@@ -9,7 +9,13 @@ colourElement.style.color = 'blue';
 
 // for practice:
 // try changing the text of the 2nd paragraph to something else
+let paragraphTwo = document.querySelector('#update-html p');
+paragraphTwo.innerText = 'something else';
+
 // try changing the colour of the 1st paragraph to something else
+let testElement = document.querySelector('section:first-child p');
+testElement.style.color = 'chartreuse';
 
 // stretch challenge:
 // add a <strong> tag to the 2nd paragraph using innerHTML
+paragraphTwo.innerHTML = '<strong>' + paragraphTwo.innerText + '</strong>';
