@@ -38,13 +38,43 @@ function updateElement(promptMessage, selectorString) {
     htmlElement.innerText = userResponse;
 }
 
+function runCalculator() {
+    // get the first number
+    let firstNumber = getUserResponse('Please enter your first number.');
+    firstNumber = Number(firstNumber);
+    
+    // get the 2nd number
+    let secondNumber = Number(getUserResponse('Please enter second number.'));
+    
+    // calculate the sum
+    let sum = firstNumber + secondNumber;
+
+    // display the sum 
+    // v1: the sum is 4
+    console.log("the sum is " + sum);
+
+    // v2: 1 + 3 = 4
+    console.log(firstNumber + ' + ' + secondNumber + ' = ' + sum);
+    // string interpolation
+    console.log(`${firstNumber} + ${secondNumber} = ${sum}`);
+
+    // v3: display that on the screen
+    let htmlElement = document.querySelector('.description');
+    htmlElement.innerText = `${firstNumber} + ${secondNumber} = ${sum}`;
+}
+
 // call functions:
 //updateUsername();
 updateElement('Please enter your name.', '#username');
 //updateDescription();
-updateElement('Please enter your description.', '.description');
+//updateElement('Please enter your description.', '.description');
+
+runCalculator();
 
 // Challenges:
-// 💗: instead of separate get functions, can we create one function that works for both?
-// 😆: instead of separate update functions, can we create 1 that works for both?
 // 😲: add a little calculator feature: prompt the user for 2 numbers, calculate the sum and display it
+
+
+
+// another approach instead of prompting would be to generate random numbers
+// getRandomInt()
