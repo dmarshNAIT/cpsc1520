@@ -5,4 +5,14 @@ console.log('linked!');
 let typoElement = document.querySelector('#update-text p');
 typoElement.innerText = 'Correct the typos in this text.';
 
-// create the rest of my variables for the other 2 paragraphs
+// let's now add <strong> tags to the next paragraph
+let strongElement = document.querySelector('#update-html p');
+strongElement.innerHTML = '<strong>' + strongElement.innerText + '</strong>';
+
+// now let's change the last element to blue
+let blueElement = document.querySelector('#update-colour p');
+blueElement.style.color = 'blue';
+
+// TWO CHALLENGES:
+// "Update text" --> make that your favourite colour
+// "Update HTML" --> make it italicized
