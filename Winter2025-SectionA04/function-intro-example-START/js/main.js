@@ -34,8 +34,9 @@ function updateDescription() {
     //console.log(sum);
     // create a variable that represents the description element in the HTML
     const descElement = document.querySelector('.description');
-    console.log(descElement); // REMOVE THIS LATER
+    console.log(descElement); // REMOVE THIS LATER, JUST FOR TESTING/DEBUGGING
     // change the contents of the description element to be "firstNum + secondNum = sum"
+    // 2 ways to do this:
     // string concatenation:
     descElement.innerText = num1 + ' + ' + num2 + ' = ' + sum;
     //or string interpolation:
