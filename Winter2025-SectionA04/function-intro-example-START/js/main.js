@@ -17,7 +17,7 @@ const updateName = () => {
     usernameElement.innerText = name;
 }
 
-// 3. call those functions
+// 3. call the function
 updateName();
 
 // 4. update the description using ANOTHER function 
@@ -41,5 +41,5 @@ function updateDescription() {
     //or string interpolation:
     descElement.innerText = `${num1} + ${num2} = ${sum}`;
 }
-
+//call the function:
 updateDescription();
