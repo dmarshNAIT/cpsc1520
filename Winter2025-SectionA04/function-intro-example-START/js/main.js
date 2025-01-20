@@ -21,9 +21,25 @@ const updateName = () => {
 updateName();
 
 // 4. update the description using ANOTHER function 
-// CHALLENGE:
-// create a function called updateDescription
-// this function will prompt the user for 2 numbers
-// it will calculate the sum of those 2 numbers
-// create a variable that represents the description element in the HTML
-// change the contents of the description element to be "firstNum + secondNum = sum"
+function updateDescription() {
+    // prompt the user for 2 numbers:
+    let num1 = prompt('Enter a number.');
+    num1 = Number(num1);
+    //const alternateNum1 = Number(prompt('Enter a number'));
+    let num2 = prompt('Enter another number.');
+    num2 = parseInt(num2);
+    // calculate sum:
+    const sum = num1 + num2;
+    // a quick test:
+    //console.log(sum);
+    // create a variable that represents the description element in the HTML
+    const descElement = document.querySelector('.description');
+    console.log(descElement); // REMOVE THIS LATER
+    // change the contents of the description element to be "firstNum + secondNum = sum"
+    // string concatenation:
+    descElement.innerText = num1 + ' + ' + num2 + ' = ' + sum;
+    //or string interpolation:
+    descElement.innerText = `${num1} + ${num2} = ${sum}`;
+}
+
+updateDescription();
