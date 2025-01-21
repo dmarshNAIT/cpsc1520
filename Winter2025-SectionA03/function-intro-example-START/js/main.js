@@ -31,14 +31,18 @@ const updateHeading2 = () => document.querySelector('#username').innerText = get
 // then change the description to contain "num1 + num2 = sum"
 const updateDescription = () => {
     const num1 = prompt('Enter 1st number:');
-    const num2 = prompt('Enter 2nd number:');
-    const sum = num1 + num2;
+    const num2 = parseInt(prompt('Enter 2nd number:'));
+    const sum = Number(num1) + num2; // 2 different ways to turn it into a #
     const descriptionElement = document.querySelector('.description');
+    // 2 ways to show our output:
+    // v1: string concatenation
     descriptionElement.innerText = num1 + " + " + num2 + " = " + sum;
-    // THIS DOESN'T QUITE WORK YET
-    // YOUR CHALLENGE: use Number() or parseInt() or implicit conversion to fix this
-    // WE WILL REVISIT THIS NEXT WEEK
+    // v2: string interpolation
+    descriptionElement.innerText = `${num1} + ${num2} = ${sum}`;
 }
+// ideally we should be consistent in how we do type coercion e.g. always use Number
+// or always use parseInt etc
+// we are using a variety just so we have examples of each
 
 // call the functions to update the page
 updateHeading();
