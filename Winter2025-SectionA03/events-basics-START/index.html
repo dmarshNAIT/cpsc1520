@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Events - Basics</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header><h1>JavaScript Events - Basics</h1></header>
+    <main>
+      <section>
+        <h2>Adding an Event Listener</h2>
+        <button class="btn btn-increment">Add 1</button>
+        <p>Count: <span class="counter">0</span></p>
+      </section>
+      <section>
+        <h2>Overriding Default Behaviour</h2>
+        <section>
+          <h3>Overriding Link</h3>
+          <p><a class="link" href="https://www.nait.ca">NAIT Homepage</a></p>
+        </section>
+        <section>
+          <h3>Overriding Form Submit</h3>
+          <form class="form">
+            <fieldset>
+              <legend>Form Example</legend>
+              <div class="form-field">
+                <label for="test">Test Input Field</label>
+                <input type="text" name="test" id="test" />
+              </div>
+              <div class="form-field">
+                <input type="submit" value="Submit" />
+              </div>
+            </fieldset>
+          </form>
+        </section>
+      </section>
+      <section>
+        <h2>Delegation Through Propagation</h2>
+        <section>
+          <h3>Pick a Colour</h3>
+          <div class="colours">
+            <div class="red"></div>
+            <div class="blue"></div>
+            <div class="green"></div>
+            <div class="white"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
