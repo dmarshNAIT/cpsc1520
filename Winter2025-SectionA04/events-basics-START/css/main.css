@@ -1,0 +1,56 @@
+body {
+    font-family: sans-serif;
+}
+
+.form {
+    width: 13rem;
+}
+
+.form legend {
+    font-weight: bold;
+}
+
+.form-field {
+    width: 10rem;
+    margin-bottom: 1rem;
+}
+
+.form-field:last-of-type {
+    margin-bottom: initial;
+}
+
+.form-field label,
+.form-field input {
+    display: block;
+}
+
+.colours {
+    width: 13rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.colours > div {
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+
+.red {
+    background: red;
+}
+
+.blue {
+    background: blue;
+}
+
+.green {
+    background: green;
+}
+
+.white {
+    box-sizing: border-box;
+    border: 1px solid black;
+    background: white;
+}

@@ -1,4 +1,4 @@
-
+(function () {
     let body = document.querySelector('body');
     let main = document.querySelector('main');
     let marker = document.querySelector('.green-box');
@@ -27,3 +27,5 @@
                          </div>`;
         main.innerHTML += newMarker;
     }
+
+})();
