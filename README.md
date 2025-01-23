@@ -14,6 +14,8 @@ Thanks!
 Some extensions I recommend:
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
     - A spell checker that checks for typos in your code and comments. It's smart enough to understand a variable like `myNumber` and parse the individual words that make up the variable name!
+- [Prettier Formatter for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+    - Makes your code pretty by applying consistent styling. Works for HTML, CSS, JavaScript, JSON, TypeScript and other languages!
 - [W3C Web Validator](https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator)
     - This validates your HTML without leaving VS Code.
     - 🔥 Tip: in settings enable "Validate On Save" and it'll auto-validate and give you a helpful pop-up confirmation every time you save your HTML file.
