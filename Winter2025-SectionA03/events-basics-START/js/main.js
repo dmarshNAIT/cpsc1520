@@ -45,3 +45,16 @@ colourfulElement.addEventListener('click', (evt) => {
     // we will use that colour to set the new background colour of the webpage
     document.body.style.backgroundColor = colourName;
 });
+
+// part 4:
+// adding an event listener to the form
+// create a variable to represent the form HTML element
+let form = document.querySelector('.form');
+// add an event listener to the form that's waiting for a `submit` event
+form.addEventListener('submit', (event) => {
+    // when we submit the form, let's prevent the form from submitting (prevent default action)
+    event.preventDefault();
+    // instead, let's print out to the console the value entered in the form
+    console.log(form.elements.test);
+    console.log(form.elements.test.value);
+});
