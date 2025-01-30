@@ -1,11 +1,15 @@
 // this is our javascript file.
 
 // intercept the form.
-
+// TODO
+const form = 
 // focus to the first element
 
 // create an event listener on the form.
     // get the form element values for title, description and amount
+    const title = 
+    const description = 
+    const amount =
     // prevent the form from being submitted.
     // get the form values.
     // add the item
