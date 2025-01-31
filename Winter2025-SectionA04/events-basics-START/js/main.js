@@ -54,3 +54,16 @@ colourBox.addEventListener('click', (event) => {
     // and use that to change the style of the page
     document.body.style.backgroundColor = colourName;
 });
+
+// part 4:
+// intercepting the form submission
+// create a variable to represent the form
+const form = document.querySelector('.form');
+// add an event listener waiting for a 'submit' event
+form.addEventListener('submit', (event) => {
+    // when the form is submitted, prevent the default behaviour
+    event.preventDefault();
+    // instead, we will print the value inputted to the console
+    console.log(form.elements.test);
+    console.log(form.elements.test.value);
+});
