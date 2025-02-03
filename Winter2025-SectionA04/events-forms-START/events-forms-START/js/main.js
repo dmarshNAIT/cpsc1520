@@ -3,6 +3,7 @@
 // intercept the form.
 const form = document.querySelector('#budget-form');
 // focus to the first element
+// TODO:
 
 // create an event listener on the form.
     // get the form element values for title, description and amount
@@ -23,9 +24,18 @@ const budgetList = document.querySelector('.current-budget'); // this represents
     TITLE HERE (AMOUNT HERE) - DESCRIPTION HERE
 </li>
 */
+const addBudgetItem = (title, amount, description) => {
+    // create a HTML template to represent the new LI
+    const li = `<li class="list-group-item list-group-item-action" aria-current="true">
+        ${title} (${amount}) - ${description}
+    </li>`;
+    // add that the budgetList
+    budgetList.innerHTML = budgetList.innerHTML + li;
+};
+
 
 // add a updateTotal function
-
+// TODO: 
 
 // add active class to list item on mouseover
 
