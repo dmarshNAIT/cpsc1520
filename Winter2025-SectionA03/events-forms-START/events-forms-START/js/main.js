@@ -2,7 +2,7 @@
 console.log('linked!');
 
 // intercept the form.
-let form = 
+let form = document.querySelector('form');
 
 // focus to the first element
 
@@ -10,13 +10,19 @@ let form =
     // get the form element values for title, description and amount
     // prevent the form from being submitted.
     // get the form values.
+    //const title = document.querySelector('#budget-item');
+    //const title = document.querySelector('input[name=budget-title]')
+    const title = form.elements['budget-title'].value;
+    const amount = document.querySelector('#budget-item-amount').value;
+    const description = document.querySelector('#budget-item-description').value;
     // add the item
     // update current budget total
     // reset the values
     // focus back at the title
-// TODO: version 1:
-    // create variables for contents of each form element: call them title, amount, description
 
+
+// create a variable to represent the budget list
+const budgetList = document.querySelector('.current-budget');
 
 // add a budget item create function
 /*
@@ -24,9 +30,14 @@ let form =
     TITLE HERE (AMOUNT HERE) - DESCRIPTION HERE
 </li>
 */
-// CHALLENGE TODO:
-    // update the innerHTML of the list
-    // add this HTML template
+const addBudgetItem = (title, amount, description) => {
+    // create the new list item:
+    const listItem = `<li class="list-group-item list-group-item-action" aria-current="true">
+        ${title} (${amount}) - ${description}
+    </li>`;
+    // and add it to the end of the list
+    budgetList.innerHTML = budgetList.innerHTML + listItem;
+};
 
 // add a updateTotal function
 // TODO:
