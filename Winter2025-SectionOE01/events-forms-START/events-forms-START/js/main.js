@@ -1,15 +1,14 @@
 // this is our javascript file.
 
 // intercept the form.
-// TODO
-const form = 
+const form = document.querySelector('#budget-form');
 // focus to the first element
 
 // create an event listener on the form.
     // get the form element values for title, description and amount
-    const title = 
-    const description = 
-    const amount =
+    const title = document.querySelector('input[name=budget-title]').value;
+    const description = form.elements['budget-description'].value;
+    const amount = document.querySelector('#budget-item-amount').value;
     // prevent the form from being submitted.
     // get the form values.
     // add the item
@@ -17,6 +16,8 @@ const form =
     // reset the values
     // focus back at the title
 
+
+const budgetList = document.querySelector('.current-budget');
 
 // add a budget item create function
 /*
