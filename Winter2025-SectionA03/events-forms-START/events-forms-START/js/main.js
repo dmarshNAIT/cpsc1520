@@ -5,21 +5,34 @@ console.log('linked!');
 let form = document.querySelector('form');
 
 // focus to the first element
+form.elements[0].focus();
 
 // create an event listener on the form.
+form.addEventListener('submit', (event) => {
     // get the form element values for title, description and amount
     // prevent the form from being submitted.
+    event.preventDefault();
+
     // get the form values.
     //const title = document.querySelector('#budget-item');
     //const title = document.querySelector('input[name=budget-title]')
     const title = form.elements['budget-title'].value;
     const amount = document.querySelector('#budget-item-amount').value;
     const description = document.querySelector('#budget-item-description').value;
-    // add the item
-    // update current budget total
-    // reset the values
-    // focus back at the title
 
+    // add the item
+    addBudgetItem(title, amount, description);
+
+    // update current budget total
+    updateTotal(amount);
+
+    // reset the values
+    form.reset();
+
+    // focus back at the title
+    form[0].focus();
+
+});
 
 // create a variable to represent the budget list
 const budgetList = document.querySelector('.current-budget');
