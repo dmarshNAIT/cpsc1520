@@ -12,6 +12,8 @@ Thanks!
 
 # Extensions
 Some extensions I recommend:
+- [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
+    - Save yourself lots of manual work by using code snippets. e.g. typing just `nfn` and hitting the tab key will create the full arrow expression to create a new function!
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
     - A spell checker that checks for typos in your code and comments. It's smart enough to understand a variable like `myNumber` and parse the individual words that make up the variable name!
 - [Prettier Formatter for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
