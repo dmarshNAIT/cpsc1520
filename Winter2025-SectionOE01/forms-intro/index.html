@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Intro</title>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <h1>Forms Intro</h1>
+    <main>
+        <form>
+            <div>
+                <label for="txt-input">Enter Text:</label>
+                <input type="text" name="txt-input" id="txt-input">
+            </div>
+            <div>
+                <label for="pass-input">Enter Password:</label>
+                <input type="password" name="pass-input" id="pass-input">
+            </div>
+            <div>
+                <p>Choose one option:</p>
+                <label for="radio-input-a">Option A</label>
+                <input type="radio" name="radio-input" id="radio-input-a" value="option a">
+                <br/>
+                <label for="radio-input-b">Option B</label>
+                <input type="radio" name="radio-input" id="radio-input-b" value="option b">
+                <br/>
+                <label for="radio-input-c">Option C</label>
+                <input type="radio" name="radio-input" id="radio-input-c" value="option c">
+            </div>
+            <div>
+                <p>Choose multiple options:</p>
+                <label for="checkbox-input-a">Option A</label>
+                <input type="checkbox" name="checkbox-input" id="checkbox-input-a" value="option a">
+                <br/>
+                <label for="checkbox-input-b">Option B</label>
+                <input type="checkbox" name="checkbox-input" id="checkbox-input-b" value="option b">
+                <br/>
+                <label for="checkbox-input-c">Option C</label>
+                <input type="checkbox" name="checkbox-input" id="checkbox-input-c" value="option c">
+            </div>
+            <div>
+                <label for="select-input">Choose an option:</label>
+                <select name="select-input" id="select-input">
+                    <option value="">Choose an option below</option>
+                    <option value="option 1">Option 1</option>
+                    <option value="option 2">Option 2</option>
+                    <option value="option 3">Option 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="textarea-input">Enter Message:</label>
+                <textarea name="textarea-input" id="textarea-input">sample text</textarea>
+            </div>
+            <div>
+                <button type="submit">Go!</button>
+            </div>
+        </form>
+    </main>
+    <div class="output"></div>
+</body>
+</html>
