@@ -40,15 +40,22 @@ const addBudgetItem = (title, amount, description) => {
 };
 
 // add a updateTotal function
-// TODO:
-    // create a function with amount as a parameter
+// create a function with amount as a parameter
+const updateTotal = (amount) => {
     // add the amount to the budget total
+    const budgetTotal = document.querySelector('#budget-total');
+    budgetTotal.innerText = parseInt(budgetTotal.innerText) + parseInt(amount);
+};
 
 // add active class to list item on mouseover
-// TODO
+budgetList.addEventListener('mouseover', (event) => {
+    event.target.classList.add('active');
+});
     // a reference to the list e.g. list
     // list.classList.add('class-name')
     // list.classList.remove('class-name')
 
 // remove active class from list item on mouseout.
-// TODO
+budgetList.addEventListener('mouseout', (event) => {
+    event.target.classList.remove('active');
+});
