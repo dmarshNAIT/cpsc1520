@@ -34,24 +34,77 @@ budgetFormElement.addEventListener('submit', (evt) => {
   let descriptionValue = budgetFormElement.elements['budget-description'].value;
   let amountValue = parseFloat(budgetFormElement.elements['amount'].value);
 
-  // call your add line item function
-  addLineItem(titleValue, descriptionValue, amountValue);
-  // clear out the form fields
-  // method 1
-  // budgetFormElement.elements['budget-title'].value = '' 
-  // budgetFormElement.elements['budget-description'].value = '';
-  // budgetFormElement.elements['amount'].value = '';
+  let validForm = true; // right now, we don't know if we have valid input
 
-  // method 2
-  budgetFormElement.reset();
+  // if title is NOT valid, validInput = false
+  if (isEmpty(titleValue)) {
+    // empty, INVALID
+    budgetFormElement.elements['budget-title'].classList.add('is-invalid');
+    validForm = false;
+  }
+  else {
+    // title is valid
+    budgetFormElement.elements['budget-title'].classList.remove('is-invalid');
+  }
+  // if description is NOT valid, validInput = false
+  if (isEmpty(descriptionValue)) {
+    // invalid
+    budgetFormElement.elements['budget-description'].classList.add('is-invalid');
+    validForm = false;
+  }
+  else {
+    // valid
+    budgetFormElement.elements['budget-description'].classList.remove('is-invalid');
+  }
+  // if amount is NOT valid, validInput = false
+  if(isGreaterThanZero(amountValue)) {
+    // valid
+    budgetFormElement.elements['amount'].classList.remove('is-invalid');
+  }
+  else {
+    // invalid
+    budgetFormElement.elements['amount'].classList.add('is-invalid');
+    validForm = false;
+  }
 
-  // re-focus on the title
-  budgetFormElement.elements['budget-title'].focus();
+  // if validForm == true
+  if (validForm) {
 
-  // call your update budget total function
-  addToTotal(amountValue);
+    // call your add line item function
+    addLineItem(titleValue, descriptionValue, amountValue);
+    // clear out the form fields
+    // method 1
+    // budgetFormElement.elements['budget-title'].value = '' 
+    // budgetFormElement.elements['budget-description'].value = '';
+    // budgetFormElement.elements['amount'].value = '';
+
+    // method 2
+    budgetFormElement.reset();
+
+    // re-focus on the title
+    budgetFormElement.elements['budget-title'].focus();
+
+    // call your update budget total function
+    addToTotal(amountValue);
+  }
 
 });
+
+const isEmpty = (value) => {
+  if (value == '') // or we could check the .length of the value
+    return true;
+  else
+    return false;
+};
+
+const isGreaterThanZero = (value) => {
+  if (value > 0)
+      return true;
+  else
+    return false;
+};
+
+
 // function to add a budget item 
 // e.g.
 // <li class="list-group-item list-group-item-action">
