@@ -3,7 +3,7 @@
 // intercept the form.
 const form = document.querySelector('#budget-form');
 // focus to the first element
-// TODO:
+document.querySelector('input[name=budget-title]').focus();
 
 // create an event listener on the form.
     // get the form element values for title, description and amount
@@ -33,11 +33,21 @@ const addBudgetItem = (title, amount, description) => {
     budgetList.innerHTML = budgetList.innerHTML + li;
 };
 
-
 // add a updateTotal function
-// TODO: 
+const updateTotal = (amount) => {
+    // get the total element
+    const totalElement = document.querySelector('#budget-total');
+
+    // add the new amount to the total & update the HTML
+    totalElement.innerText =  parseInt(totalElement.innerText) + parseInt(amount);
+};
 
 // add active class to list item on mouseover
-
+budgetList.addEventListener('mouseover', (event) => {
+    event.target.classList.add('active');
+});
 
 // remove active class from list item on mouseout.
+budgetList.addEventListener('mouseout', (event) => {
+    event.target.classList.remove('active');
+});
