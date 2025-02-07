@@ -102,7 +102,7 @@ budgetList.addEventListener('mouseout', (event) => {
 
 /* VALIDATOR FUNCTIONS */
 const isTextEmpty = (value) => {
-    return (value.length == 0);
+    return (value.trim().length == 0);
 }
 
 const isGreaterThanZero = (value) => {
