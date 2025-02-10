@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+
+  <title>Welcome to JavaScript</title>
+
+  <!-- Link to Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/cover.css">
+  <script src="js/main.js" defer></script>
+</head>
+
+<body class="d-flex h-100  text-white bg-dark">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <main class="px-3 container">
+      <h1 id="title" class="text-center">Wordle</h1>
+      <form class="wordle" id="wordle-form">
+        <div class="row">
+          <div class="mb-3 col-9">
+            <input name="guess" type="text" class="form-control" id="movie-filter">
+            <div class="invalid-feedback">
+              Invalid Guess, Guess needs to be 5 letters
+            </div>
+          </div>
+
+          <div class="mb-3 col-3">
+            <button type="submit" class="w-100 btn btn-primary">Guess</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="wordle-success alert alert-success m-5 text-center hidden" role="alert">
+        You did it!
+      </div>
+      <div class="wordle">
+        <div class="guess-0 guesses d-flex flex-row align-items-center justify-content-between">
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+        </div>
+        <div class="guess-1 guesses d-flex flex-row align-items-center justify-content-between">
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+        </div>
+        <div class="guess-2 guesses d-flex flex-row align-items-center justify-content-between">
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+        </div>
+        <div class="guess-3 guesses d-flex flex-row align-items-center justify-content-between">
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+        </div>
+        <div class="guess-4 guesses d-flex flex-row align-items-center justify-content-between">
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+        </div>
+        <div class="guess-5 guesses d-flex flex-row align-items-center justify-content-between">
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+          <div class=" guess-character"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</body>
+
+</html>
