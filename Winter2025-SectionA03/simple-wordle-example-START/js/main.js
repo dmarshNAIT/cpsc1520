@@ -2,7 +2,7 @@
 We're going to build wordle without the keyboard.
 
 1. Add an event listener that listens to the form
-2. Validate if the value to see if it's five characters
+2. Validate if the value to see if it's five characters AND make sure it's not already been guessed
 3. Create a function called "addguess" which pushes the guess on the guesses array
    Note: this is going to to take our new guess as a parameter
 4. only call the add guess function if the form is valid
@@ -24,3 +24,36 @@ We're going to build wordle without the keyboard.
    We're going to create a function that will check this each guess!
 
 */
+
+let guesses = [];
+const answer = 'moose';
+
+// TODO: create event listener
+
+const addGuess = (newGuess) => {
+   guesses.push(newGuess);
+
+   console.log('Current guesses:', guesses);
+}
+
+// TODO: showGuessOnPage
+
+const isCharacterInCorrectPlace = (character, index) => {
+   return  character === answer[index] ;
+}
+
+const isCharacterInWord = (character) => {
+   return answer.includes(character);
+}
+
+// TODO: checkIfCorrect (HOORAY!)
+const checkIfCorrect = () => {
+   // check if the answer is in our list of guesses
+   
+   // if so, remove the 'hidden' class from the success element
+   
+}
+
+// POSSIBLE TODO: LIST
+// instead of hardcoding a word, randomly select one from a list of words
+// or, read it in from a list of options (THIS IS FOR FUTURE US ONCE WE LEARN HOW TO READ FROM A FILE)
