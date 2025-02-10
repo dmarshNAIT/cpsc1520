@@ -25,7 +25,37 @@ form.addEventListener('submit', (event) => {
 
   let isFormValid = true;
 
-  // TODO: validate
+  // validate the title
+  // check if it's empty
+  // if so: NOT valid
+  if (isEmpty(titleElement)) {
+    // invalid
+    titleElement.classList.add('is-invalid');
+    isFormValid = false;
+  } else {
+    // valid
+    titleElement.classList.remove('is-invalid');
+  }
+
+  // validate the description
+  if (isEmpty(descriptionElement)) {
+    // invalid
+    descriptionElement.classList.add('is-invalid');
+    isFormValid = false;
+  } else {
+    // valid
+    descriptionElement.classList.remove('is-invalid');
+  }
+
+  // validate the price
+  // if it's in range: VALID
+  if(inRangeInclusive(amountElement, 3, 15)) {
+    amountElement.classList.remove('is-invalid');
+  }
+  else {
+    amountElement.classList.add('is-invalid');
+    isFormValid = false;
+  }
 
   if (isFormValid) {
     // add the item
