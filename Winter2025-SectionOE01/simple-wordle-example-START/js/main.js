@@ -24,3 +24,46 @@ We're going to build wordle without the keyboard.
    We're going to create a function that will check this each guess!
 
 */
+
+let guesses = [];
+const answer = 'goose';
+
+// TODO: add event listener
+
+const addGuess = (newGuess) => {
+   guesses.push(newGuess);
+
+   console.log('Current contents of guesses array: ', guesses);
+}
+
+// TODO: showGuessOnPage
+// check to make sure we have 1+ guesses
+
+// select the guess row e.g. guess-0
+
+// add each letter to the corresponding letter div
+
+// if that letter is in correct place:
+   // + 'correct-letter-placement' class
+// if not, check if it's elsewhere in the word
+   // + 'ncorrect-letter-placement '
+
+const isCharacterInCorrectPlace = (character, index) => {
+   // check if character matches the letter at position "index" in answer
+   // return true if so, false otherwise
+  return character === answer[index];
+}
+
+const isCharacterInWord = (character) => {
+   // includes() is a function for arrays
+   // as strings are just an array of characters, this works!
+   return answer.includes(character);
+}
+
+const checkIfCorrect = () => {
+   // look through our guesses and see if the answer is in the array
+   if (guesses.includes(answer)){
+      // if so: remove the class called 'hidden' from the wordle-success element
+         document.querySelector('.wordle-success').classList.remove('hidden');
+   }
+}
