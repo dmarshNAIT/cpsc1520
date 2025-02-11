@@ -31,39 +31,49 @@ const answer = 'goose';
 // TODO: add event listener
 
 const addGuess = (newGuess) => {
-   guesses.push(newGuess);
+  guesses.push(newGuess);
 
-   console.log('Current contents of guesses array: ', guesses);
-}
+  console.log('Current contents of guesses array: ', guesses);
+};
 
 // TODO: showGuessOnPage
-// check to make sure we have 1+ guesses
+const showGuessOnPage = () => {
+  // check to make sure we have 1+ guesses
+  if (guesses.length > 0) {
+   // figure out which guess we are currently on
+   const currentGuessNumber = guesses.length - 1;
 
-// select the guess row e.g. guess-0
+    // select the divs in the guess row e.g. guess-0
+    const selector = `.guess-${currentGuessNumber} .guess-character`;
+    const guessCharacters = document.querySelectorAll(selector);
 
-// add each letter to the corresponding letter div
+   // call forEach on guessCharacters
+   // params: letter, index
 
-// if that letter is in correct place:
-   // + 'correct-letter-placement' class
-// if not, check if it's elsewhere in the word
-   // + 'ncorrect-letter-placement '
+      // first: update the innerHTML of that letter (AKA that div)
+
+      // if in the correct place,  + 'correct-letter-placement' class
+
+      // otherwise if elsewhere in the word, + 'incorrect-letter-placement '
+  }
+};
 
 const isCharacterInCorrectPlace = (character, index) => {
-   // check if character matches the letter at position "index" in answer
-   // return true if so, false otherwise
+  // check if character matches the letter at position "index" in answer
+  // return true if so, false otherwise
   return character === answer[index];
-}
+};
 
 const isCharacterInWord = (character) => {
-   // includes() is a function for arrays
-   // as strings are just an array of characters, this works!
-   return answer.includes(character);
-}
+  // includes() is a function for arrays
+  // as strings are just an array of characters, this works!
+  return answer.includes(character);
+};
 
 const checkIfCorrect = () => {
-   // look through our guesses and see if the answer is in the array
-   if (guesses.includes(answer)){
-      // if so: remove the class called 'hidden' from the wordle-success element
-         document.querySelector('.wordle-success').classList.remove('hidden');
-   }
-}
+  // look through our guesses and see if the answer is in the array
+  if (guesses.includes(answer)) {
+    // if so: remove the class called 'hidden' from the wordle-success element
+    document.querySelector('.wordle-success').classList.remove('hidden');
+  }
+};
