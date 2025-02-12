@@ -46,12 +46,12 @@ const isCharacterInWord = (character) => {
    return answer.includes(character);
 }
 
-// TODO: checkIfCorrect (HOORAY!)
 const checkIfCorrect = () => {
    // check if the answer is in our list of guesses
-   
-   // if so, remove the 'hidden' class from the success element
-   
+   if (guesses.includes(answer)) {
+      // if so, remove the 'hidden' class from the success element
+      document.querySelector('.wordle-success').classList.remove('hidden');
+   }
 }
 
 // POSSIBLE TODO: LIST
