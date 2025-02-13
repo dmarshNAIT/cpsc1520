@@ -36,7 +36,6 @@ const addGuess = (newGuess) => {
   console.log('Current contents of guesses array: ', guesses);
 };
 
-// TODO: showGuessOnPage
 const showGuessOnPage = () => {
   // check to make sure we have 1+ guesses
   if (guesses.length > 0) {
@@ -48,13 +47,24 @@ const showGuessOnPage = () => {
     const guessCharacters = document.querySelectorAll(selector);
 
    // call forEach on guessCharacters
-   // params: letter, index
+   guessCharacters.forEach( (letter, index, array) => {  
+        // first: update the innerHTML of that letter (AKA that div)
+        const currentGuess = guesses[currentGuessNumber];
+        const currentLetter = currentGuess[index];
 
-      // first: update the innerHTML of that letter (AKA that div)
+        letter.innerHTML = currentLetter;
+        // or without "helper variables"
+        letter.innerHTML = guesses[currentGuessNumber][index];
 
-      // if in the correct place,  + 'correct-letter-placement' class
-
-      // otherwise if elsewhere in the word, + 'incorrect-letter-placement '
+        // if in the correct place,  + 'correct-letter-placement' class
+        if (isCharacterInCorrectPlace(currentLetter, index)) {
+          letter.classList.add('correct-letter-placement');
+        }
+        // otherwise if elsewhere in the word, + 'incorrect-letter-placement '
+        else if (isCharacterInWord(currentLetter)) {
+          letter.classList.add('incorrect-letter-placement');
+        }
+   });
   }
 };
 
