@@ -27,8 +27,32 @@ We're going to build wordle without the keyboard.
 
 let guesses = [];
 const answer = 'goose';
+const guessElement = document.querySelector('#movie-filter');
+const form = document.querySelector('#wordle-form');
+guessElement.focus();
 
-// TODO: add event listener
+
+form.addEventListener('submit', (event) => {
+  // prevent the default auction
+  event.preventDefault();
+  //console.log(guessElement)
+  const guess = guessElement.value.toLowerCase();
+  //console.log(guess)
+  // validate that it's a 5 letter word
+  if ( guess.length === 5 ) {
+    guessElement.classList.remove('is-invalid');
+    // if so, addGuess(), showGuessOnPage(), checkIfCorrect()
+    addGuess(guess);
+    showGuessOnPage();
+    checkIfCorrect();
+    form.reset();
+    guessElement.focus();
+  }
+  else {
+    // mark as invalid
+    guessElement.classList.add('is-invalid');
+  }
+});
 
 const addGuess = (newGuess) => {
   guesses.push(newGuess);
@@ -39,32 +63,32 @@ const addGuess = (newGuess) => {
 const showGuessOnPage = () => {
   // check to make sure we have 1+ guesses
   if (guesses.length > 0) {
-   // figure out which guess we are currently on
-   const currentGuessNumber = guesses.length - 1;
+    // figure out which guess we are currently on
+    const currentGuessNumber = guesses.length - 1;
 
     // select the divs in the guess row e.g. guess-0
     const selector = `.guess-${currentGuessNumber} .guess-character`;
     const guessCharacters = document.querySelectorAll(selector);
 
-   // call forEach on guessCharacters
-   guessCharacters.forEach( (letter, index, array) => {  
-        // first: update the innerHTML of that letter (AKA that div)
-        const currentGuess = guesses[currentGuessNumber];
-        const currentLetter = currentGuess[index];
+    // call forEach on guessCharacters
+    guessCharacters.forEach((letter, index, array) => {
+      // first: update the innerHTML of that letter (AKA that div)
+      const currentGuess = guesses[currentGuessNumber];
+      const currentLetter = currentGuess[index];
 
-        letter.innerHTML = currentLetter;
-        // or without "helper variables"
-        letter.innerHTML = guesses[currentGuessNumber][index];
+      letter.innerHTML = currentLetter;
+      // or without "helper variables"
+      letter.innerHTML = guesses[currentGuessNumber][index];
 
-        // if in the correct place,  + 'correct-letter-placement' class
-        if (isCharacterInCorrectPlace(currentLetter, index)) {
-          letter.classList.add('correct-letter-placement');
-        }
-        // otherwise if elsewhere in the word, + 'incorrect-letter-placement '
-        else if (isCharacterInWord(currentLetter)) {
-          letter.classList.add('incorrect-letter-placement');
-        }
-   });
+      // if in the correct place,  + 'correct-letter-placement' class
+      if (isCharacterInCorrectPlace(currentLetter, index)) {
+        letter.classList.add('correct-letter-placement');
+      }
+      // otherwise if elsewhere in the word, + 'incorrect-letter-placement '
+      else if (isCharacterInWord(currentLetter)) {
+        letter.classList.add('incorrect-letter-placement');
+      }
+    });
   }
 };
 
