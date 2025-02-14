@@ -35,7 +35,7 @@ form.addEventListener('submit', (event) => {
    if (guessElement.value.length === 5) {
       guessElement.classList.remove('is-invalid');
       // if valid: addGuess, showGuessOnPage, isWordCorrect
-      addGuess(guess);
+      addGuess(guessElement.value);
       showGuessOnPage();
       isWordCorrect();
    } else {
