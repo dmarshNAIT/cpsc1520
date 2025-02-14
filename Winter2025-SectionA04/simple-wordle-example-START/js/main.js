@@ -23,9 +23,25 @@ if in word :
 // an array to hold all our guesses:
 let guesses = [];
 // a variable to hold the secret word:
-let answer = 'turtl';
+const answer = 'turtl';
+const form = document.querySelector('form');
 
-// TODO: event listener
+form.addEventListener('submit', (event) => {
+   // prevent default action
+   event.preventDefault();
+   // grab the values entered by the user
+   let guessElement = event.target.elements['guess'];
+   // validate them
+   if (guessElement.value.length === 5) {
+      guessElement.classList.remove('is-invalid');
+      // if valid: addGuess, showGuessOnPage, isWordCorrect
+      addGuess(guess);
+      showGuessOnPage();
+      isWordCorrect();
+   } else {
+      guessElement.classList.add('is-invalid');
+   }
+});
 
 // 3. Create a function called "addguess" which pushes the guess on the guesses array
 //    Note: this is going to to take our new guess as a parameter
