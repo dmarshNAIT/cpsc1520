@@ -27,15 +27,31 @@ We're going to build wordle without the keyboard.
 
 let guesses = [];
 const answer = 'moose';
+const form = document.querySelector('#wordle-form');
 
-// TODO: create event listener
-// validate that the input has 5 chars
-// mark it as invalid if not
+form.addEventListener('submit', (event) => {
+   event.preventDefault();
+   const guessElement = form.elements['guess'];
+   // console.log(guessElement);
+   // console.log(guessElement.value);
 
-// if it's valid:
-// addGuess()
-// showGuessOnPage()
-// checkIfCorrect()
+   // validate that the input has 5 chars
+   if (guessElement.value.length === 5) {
+      // valid guess!
+      // mark it as valid
+      guessElement.classList.remove('is-invalid');
+      addGuess(guessElement.value.toLowerCase());
+      showGuessOnPage();
+      checkIfCorrect();
+      form.reset();
+   }
+   else {
+      // invalid guess!
+      // mark it as invalid
+      guessElement.classList.add('is-invalid');
+   }
+
+});
 
 const addGuess = (newGuess) => {
    guesses.push(newGuess);
@@ -93,3 +109,4 @@ const checkIfCorrect = () => {
 // POSSIBLE TODO: LIST
 // instead of hardcoding a word, randomly select one from a list of words
 // or, read it in from a list of options (THIS IS FOR FUTURE US ONCE WE LEARN HOW TO READ FROM A FILE)
+// prevent the user from guessing after they have maxed out their guesses
