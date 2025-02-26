@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todo - Object Literal Example</title>
+  <!-- Link to Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="js/main.js" defer></script>
+</head>
+
+<body class="d-flex h-100">
+
+  <div class=" d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main class="container">
+      <form id="add-todo-form">
+        <div class="row">
+          <div class="mb-3 col-9">
+            <input name="todo-description" type="text" class="form-control" placeholder="todo">
+          </div>
+          <div class="mb-3 col-3">
+            <button type="submit" class="w-100 btn btn-primary">Add Todo</button>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <p>Completed Todos: <span id="todo-complete-count">0</span></p>
+      </div>
+      <ul class="todo-list list-group">
+      </ul>
+    </main>
+  </div>
+</body>
+
+</html>
