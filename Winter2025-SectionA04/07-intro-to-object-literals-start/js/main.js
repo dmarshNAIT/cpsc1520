@@ -19,13 +19,24 @@
 
 let todos = [
     {
-        description: 'Todo 1',
+        description: 'Clean room',
         complete: false,
 
     },
     {
-        description: 'Todo 2',
+        description: 'Breathe',
         complete: true,
     }
 ];
 
+// TODO Part 1:
+// create an event listener that is waiting for us to submit the form
+// when the form is submitted, we grab the value the user typed and pass it to a function called addTask
+// addTask: add the task to the array, then call renderTaskList
+// renderTaskList: loop through the array, and add each li to the page
+
+// TODO Part 2:
+// create an event listener that is waiting for us to check or uncheck (CHANGE) a task on the page
+// update the complete property of that object
+// call a function named countCompletedTasks
+// countCompletedTasks: count the # of complete tasks & update the HTML
