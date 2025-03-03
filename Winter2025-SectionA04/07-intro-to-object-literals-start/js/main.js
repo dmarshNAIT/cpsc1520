@@ -130,5 +130,16 @@ const countCompletedTasks = () => {
 
 countCompletedTasks();
 
+// event listener for the checkbox
+// update the complete property of the object
+// call countCompletedTasks
+document.querySelector('.todo-list').addEventListener( 'change', (event) => {
+  let currentTask = event.target;
+  // we will get the index from the data attribute called data-todo-id
+  let index = currentTask.dataset.todoId;
+  todos[index].complete = !todos[index].complete;
+  countCompletedTasks();
+} );
+
 // TODO: FINISHING TOUCHES
 // resetting form, adding focus, initial rendering of the page
