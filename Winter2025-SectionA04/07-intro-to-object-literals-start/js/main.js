@@ -48,6 +48,8 @@ form.addEventListener('submit', (event) => {
 
   // grab the value & pass it to addTask function
   addTask(inputElement.value);
+
+  form.reset();
 });
 
 const addTask = (newTaskDescription) => {
@@ -65,6 +67,9 @@ const addTask = (newTaskDescription) => {
 };
 
 const renderTaskList = () => {
+  const ul = document.querySelector('.todo-list');
+  ul.innerHTML = '';
+
   // loop through the elements in the array
   // for each element, create a li
   // add the li to the ul
@@ -84,18 +89,37 @@ const renderTaskList = () => {
             ${task.description}
         </li>`;
 
-        const ul = document.querySelector('.todo-list');
         ul.innerHTML = ul.innerHTML + newLI;
 
   });
 
 };
 
+// show the original tasks:
+renderTaskList(); 
+
 // TODO Part 2:
 // create an event listener that is waiting for us to check or uncheck (CHANGE) a task on the page
 // update the complete property of that object
 // call a function named countCompletedTasks
 // countCompletedTasks: count the # of complete tasks & update the HTML
+
+const countCompletedTasks = () => {
+  // loop through the array
+  // if the task is complete, increment a counter
+  // use that counter to update the HTML
+
+  // v1: using forEach
+  let count = 0;
+  todos.forEach( (task) => {
+      if (task.complete) count++;
+  });
+
+  const spanElement = document.getElementById('todo-complete-count');
+  spanElement.innerText = count;
+}
+
+countCompletedTasks();
 
 // TODO: FINISHING TOUCHES
 // resetting form, adding focus, initial rendering of the page
