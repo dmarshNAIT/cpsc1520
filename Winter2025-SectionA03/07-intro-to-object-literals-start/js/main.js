@@ -38,7 +38,9 @@ let form = document.getElementById('add-todo-form');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   let taskDescription = form.elements['todo-description'].value;
+  // BONUS CHALLENGE: add validation so we can't add empty tasks
   addTask(taskDescription);
+  form.reset();
 });
 
 const addTask = (newTaskDescription) => {
@@ -57,8 +59,8 @@ const addTask = (newTaskDescription) => {
   renderTasks();
 };
 
+const ul = document.querySelector('.list-group');
 const renderTasks = () => {
-  const ul = document.querySelector('.list-group');
   ul.innerHTML = '';
 
   // HIGH LEVEL PLAN:
@@ -116,6 +118,17 @@ const calculateCount = () => {
 
 calculateCount();
 
-// TODO: finishing touches: checking focus, reset
+ul.addEventListener('change', (event) => {
+  const currentTask = event.target;
+  const taskIndex = currentTask.dataset.todoId;
+  // toggle true to false, or vice versa:
+  todos[taskIndex].complete = !todos[taskIndex].complete;
+  calculateCount();
+});
 
-// TODO: add another priority/importance property
+
+// CHALLENGE/EXTRA PRACTICE TODO: add another priority/importance property
+
+// EXTRA PRACTICE: add functionality to remove items
+
+// EXTRA PRACTICE: add styling e.g. fading out completed tasks
