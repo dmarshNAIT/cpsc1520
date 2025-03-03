@@ -31,7 +31,7 @@ let todos = [
 // TODO #1: let's add an event listener that waits for us to submit the form
 // when the form is submitted, we will call a helper function called addTask(newTask)
 // addTask will add our new task to the array
-// then, it will call the helper function renderTasks
+// then, it will call the helper function renderTasks()
 // renderTasks will make them appear on the webpage
 
 let form = document.getElementById('add-todo-form');
@@ -58,6 +58,9 @@ const addTask = (newTaskDescription) => {
 };
 
 const renderTasks = () => {
+  const ul = document.querySelector('.list-group');
+  ul.innerHTML = '';
+
   // HIGH LEVEL PLAN:
   // iterate through the elements in the array
   // and add each to the HTML content
@@ -68,7 +71,7 @@ const renderTasks = () => {
   // then add that <li> to the <ul>
 
   todos.forEach((task, index, todoList) => {
-    const newLi =   `<li class="list-group-item">
+    const newLi = `<li class="list-group-item">
                         <input class="form-check-input todo-status"
                             data-todo-id="${index}"
                             type="checkbox"
@@ -77,15 +80,41 @@ const renderTasks = () => {
                         ${task.description}
                     </li>`;
 
-    const ul = document.querySelector('.list-group');
-
     ul.innerHTML = ul.innerHTML + newLi;
   });
 };
 
+renderTasks();
+
 // TODO #2: we'll add another event listener that waits for changes to the checkboxes (e.g. complete)
 // it will call a helper function called calculateCount which will count the # of completed todos
+// change the property of the associated object in our array
 // calculateCount will use reduce to get that number
+
+const calculateCount = () => {
+  // iterate through the array
+  // count up the # of complete
+
+  // v1: forEach
+  // let count = 0;
+  // todos.forEach((task) => {
+  //   if (task.complete) count++;
+  // });
+
+  // v2: reduce: array -> single value
+  let count = todos.reduce((accumulator, task) => {
+    if (task.complete) accumulator++;
+
+    return accumulator;
+  }, 0); // 0 is the initial value of the accumulator
+
+  // v3 (take-home challenge): filter & length
+
+  // use that value to update the innerText of the span
+  document.getElementById('todo-complete-count').innerText = count;
+};
+
+calculateCount();
 
 // TODO: finishing touches: checking focus, reset
 
