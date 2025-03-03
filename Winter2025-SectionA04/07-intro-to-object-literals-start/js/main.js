@@ -110,10 +110,19 @@ const countCompletedTasks = () => {
   // use that counter to update the HTML
 
   // v1: using forEach
-  let count = 0;
-  todos.forEach( (task) => {
-      if (task.complete) count++;
-  });
+  // let count = 0;
+  // todos.forEach( (task) => {
+  //     if (task.complete) count++;
+  // });
+
+  // v2: using reduce
+  let count = todos.reduce( (accumulator, task) => {
+    if (task.complete) return accumulator + 1;
+    else return accumulator;
+  }, 0); // 0 is the initial value of the accumulator
+
+  // v3: can we do this using filter & length?
+  // v4: can we do this using a regular for loop?
 
   const spanElement = document.getElementById('todo-complete-count');
   spanElement.innerText = count;
