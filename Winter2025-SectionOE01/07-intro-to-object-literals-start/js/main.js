@@ -82,3 +82,47 @@ renderTasks();
 
 // TODO STEP 2:
 // create another event listener that updates the count when we CHANGE the status of a task
+
+const calculateCompletedTasks = () => {
+  // iterate through the todos array
+  // count every completed task
+
+  // v1: forEach
+  // let count = 0;
+  // todos.forEach((taskItem) => {
+  //   if (taskItem.complete) count++;
+  // });
+
+  // v2: reduce      
+  // reduce() takes an array --> reduces it down to a single value
+  let count = todos.reduce((accumulator, taskItem) => {
+    if (taskItem.complete) accumulator++;
+
+    return accumulator;
+  }, 0);
+
+  // v3: filter & length
+  // try this on your own!
+
+  const spanElement = document.getElementById('todo-complete-count');
+  spanElement.innerText = count;
+}
+
+calculateCompletedTasks();
+
+const ulElement = document.querySelector('.todo-list');
+
+ulElement.addEventListener('change', (event) => {
+  const currentTask = event.target;
+  //  console.log(currentTask);
+  const taskIndex = currentTask.dataset.todoId;
+  // console.log(taskIndex);
+  
+  // update the property of the object
+  todos[taskIndex].complete = ! todos[taskIndex].complete;
+
+  calculateCompletedTasks();
+});
+
+// CHALLENGES for extra practice:
+// add validation so empty tasks cannot be added
