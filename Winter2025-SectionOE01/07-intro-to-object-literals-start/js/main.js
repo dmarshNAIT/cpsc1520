@@ -19,13 +19,13 @@
 
 let todos = [
   {
-    description: 'Todo 1',
-    complete: false,
+    description: 'Work on books example',
+    complete: false
   },
   {
-    description: 'Todo 2',
-    complete: true,
-  },
+    description: 'Review objects',
+    complete: true
+  }
 ];
 
 // TODO STEP 1:
@@ -41,23 +41,26 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   const taskDescription = form.elements['todo-description'].value;
   addTask(taskDescription);
+  form.reset();
 });
 
 const addTask = (newTaskDescription) => {
   // create a new object
   const newTask = {
     description: newTaskDescription,
-    complete: false,
+    complete: false
   };
 
   // add the object to the array
   todos.push(newTask);
 
   renderTasks();
+  
 };
 
 const renderTasks = () => {
   const ul = document.querySelector('.todo-list');
+  ul.innerHTML = '';
 
   todos.forEach((task, index, taskArray) => {
     // create a new li
@@ -74,6 +77,8 @@ const renderTasks = () => {
     ul.innerHTML = ul.innerHTML + newLi;
   });
 };
+
+renderTasks();
 
 // TODO STEP 2:
 // create another event listener that updates the count when we CHANGE the status of a task
