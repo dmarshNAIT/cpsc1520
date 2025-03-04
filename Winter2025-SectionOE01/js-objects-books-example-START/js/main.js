@@ -37,6 +37,54 @@ Sample object in the array of books returned from getAllBooks:
   "language":"eng",
   "numberOfRatings": 652}
 */
+
+// Step 2. create the renderBooks method which renders the books in the table.
+const renderBooks = (books) => {
+  // for each book in the array, add a <tr> to the page
+
+  books.forEach((book) => {
+    const newRow = `<tr>
+      <td>${book.bookId}</td>
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.rating}</td>
+      <td>${book.numberOfRatings}</td>
+    </tr>`;
+
+    const tableBody = document.getElementById('book-rows');
+    tableBody.innerHTML += newRow;
+  });
+}
+
+let allBooks = getAllBooks();
+renderBooks(allBooks);
+
+
+// TODO: 3. select the table body, select the form and call the two function from the
+// previous steps. This should show in the table.
+// TODO: 4. create the getAuthors function and present the authors array step by step.
+//   - use map to display the authors
+//   - use filter to get distinct authors
+//   - present sort as a function on an array to show you can sort things!
+// TODO: 5. create the function renderAuthorOptions to add the options to the select.
+
+// TODO: 6. add the event listener to the form.
+// TODO: 7. get the form values.
+// TODO: 8. create the getBooksFilter function with 3 params: filterQuery, objectkey, and booklist
+//   - this is going to fiter out based on a given key.
+// TODO: 9. in your event handler:
+//   - get books.
+//   - pass the subset into a filter
+//   - render the booklist
+
+
+
+
+
+
+
+
+
 function getAllBooks() {
   return [
   {"bookId":1,
