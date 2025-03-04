@@ -42,31 +42,71 @@ Sample object in the array of books returned from getAllBooks:
 const renderBooks = (books) => {
   // for each book in the array, add a <tr> to the page
 
-  books.forEach((book) => {
-    const newRow = `<tr>
-      <td>${book.bookId}</td>
-      <td>${book.title}</td>
-      <td>${book.author}</td>
-      <td>${book.rating}</td>
-      <td>${book.numberOfRatings}</td>
-    </tr>`;
+  // v1: forEach
+  // books.forEach((book) => {
+  //   const newRow = `<tr>
+  //     <td>${book.bookId}</td>
+  //     <td>${book.title}</td>
+  //     <td>${book.author}</td>
+  //     <td>${book.rating}</td>
+  //     <td>${book.numberOfRatings}</td>
+  //   </tr>`;
 
-    const tableBody = document.getElementById('book-rows');
-    tableBody.innerHTML += newRow;
-  });
+  //   const tableBody = document.getElementById('book-rows');
+  //   tableBody.innerHTML += newRow;
+  // });
+
+  // v2: using for/of
+  for(let book of books) {
+    const newRow = `<tr>
+    <td>${book.bookId}</td>
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.rating}</td>
+    <td>${book.numberOfRatings}</td>
+  </tr>`;
+
+  const tableBody = document.getElementById('book-rows');
+  tableBody.innerHTML += newRow;
+  }
 }
 
 let allBooks = getAllBooks();
 renderBooks(allBooks);
 
 
-// TODO: 3. select the table body, select the form and call the two function from the
-// previous steps. This should show in the table.
+
 // TODO: 4. create the getAuthors function and present the authors array step by step.
-//   - use map to display the authors
-//   - use filter to get distinct authors
-//   - present sort as a function on an array to show you can sort things!
-// TODO: 5. create the function renderAuthorOptions to add the options to the select.
+
+const getAuthors = (books) => {
+  //   map() lets us create a new array after applying some transformation
+  // "classic" syntax
+  // const authors = books.map((book) => {
+  //   return book.author
+  // });
+  // slightly more concise syntax:
+  const authors = books.map((book) => book.author);
+  //console.log(authors);
+
+  //   filter will give us distinct authors
+  const distinctAuthors = authors.filter( (author, index) => {
+    // if the index of an author is the FIRST instance of that author,
+    // return true 
+    // otherwise, return false (we filter out the duplicates)
+    return (index === authors.indexOf(author))
+  });
+
+  //   sort the authors in ABC order
+  return distinctAuthors.sort();
+}
+
+
+
+
+// TODO: 5. create the function renderAuthorOptions(books) to add the options to the select.
+// call getAuthors() to get our array of authors
+// for each author in the array, add an <option> to the dropdown
+// <option value="AUTHOR NAME">AUTHOR NAME</option> 
 
 // TODO: 6. add the event listener to the form.
 // TODO: 7. get the form values.
@@ -833,6 +873,4 @@ function getAllBooks() {
   "numberOfRatings": 160},
   ]
 }
-
-
 
