@@ -60,12 +60,29 @@ const renderBooks = (books) => {
 const books = getAllBooks();
 renderBooks(books);
 
-// TODO: 3. select the table body, select the form and call the two function from the
-// previous steps. This should show in the table.
+
 // TODO: 4. create the getAuthors function and present the authors array step by step.
-//   - use map to display the authors
-//   - use filter to get distinct authors
-//   - present sort as a function on an array to show you can sort things!
+const getAuthors = (books) => {
+  //   - use map to display the authors
+  // v1: classic syntax:
+  // const authors = books.map( (book) => {
+  //   return book.author;
+  // });
+  // v2: more concise syntax
+  const authors = books.map( (book) => book.author);
+  console.log(authors);
+
+  //   - use filter to get distinct authors
+  const distinctAuthors = authors.filter( (author, index) => {
+    // return true if index matches the FIRST index of that author
+    // return false otherwise
+  });
+
+  //   - present sort as a function on an array to show you can sort things!
+  
+}
+
+
 // TODO: 5. create the function renderAuthorOptions to add the options to the select.
 
 // TODO: 6. add the event listener to the form.
