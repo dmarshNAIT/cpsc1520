@@ -61,25 +61,33 @@ const books = getAllBooks();
 renderBooks(books);
 
 
-// TODO: 4. create the getAuthors function and present the authors array step by step.
+// 4. create the getAuthors function
 const getAuthors = (books) => {
-  //   - use map to display the authors
   // v1: classic syntax:
   // const authors = books.map( (book) => {
   //   return book.author;
   // });
+
   // v2: more concise syntax
   const authors = books.map( (book) => book.author);
-  console.log(authors);
+  // console.log(authors);
 
   //   - use filter to get distinct authors
   const distinctAuthors = authors.filter( (author, index) => {
     // return true if index matches the FIRST index of that author
     // return false otherwise
-  });
 
-  //   - present sort as a function on an array to show you can sort things!
-  
+    // v1:
+    // if (authors.indexOf(author) === index) // it's the 1st instance
+    //   return true;
+    // else
+    //   return false;
+
+    return (authors.indexOf(author) === index);
+  }).sort();
+  // console.log(distinctAuthors);
+
+  return distinctAuthors;
 }
 
 
