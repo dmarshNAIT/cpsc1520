@@ -91,7 +91,20 @@ const getAuthors = (books) => {
 }
 
 
-// TODO: 5. create the function renderAuthorOptions to add the options to the select.
+// 5. create the function renderAuthorOptions to add the options to the select.
+const renderAuthorOptions = (books) => {
+  // use the books array to get the list of authors
+  const authors = getAuthors(books);
+
+  const dropdownElement = document.querySelector('.form-select');
+  // for each author, add an option to the dropdown
+  // <option value="AUTHOR">AUTHOR</option>
+  authors.forEach((author) => {
+    dropdownElement.innerHTML += `<option value="${author}">${author}</option>`
+  });
+}
+renderAuthorOptions(books);
+
 
 // TODO: 6. add the event listener to the form.
 // TODO: 7. get the form values.
