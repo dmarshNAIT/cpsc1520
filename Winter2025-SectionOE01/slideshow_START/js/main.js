@@ -64,6 +64,19 @@ document.querySelector('.carousel').addEventListener('click', function (evt){
     }
 }); 
 
-// TODO: what happens if we scroll too far?
+// let's make this work for arrow left & arrow right
+document.addEventListener('keydown', (event) => {
+    console.log('the event key is ' + event.key);
+    console.log('the event code is ' + event.code);
 
-// TODO: add another event listener
+    if(event.code === 'ArrowLeft') {
+        // simulate clicking the left control
+        let click = new MouseEvent('click', {bubbles: true});
+        document.querySelector('span.control.prev').dispatchEvent(click);
+    }
+    else if (event.code === 'ArrowRight') {
+        // simulate clicking the right control
+        let click = new MouseEvent('click', {bubbles: true});
+        document.querySelector('span.control.next').dispatchEvent(click);
+    }
+});
