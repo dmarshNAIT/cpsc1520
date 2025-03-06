@@ -20,13 +20,20 @@
 let todos = [
   {
     description: 'Clean room',
-    complete: false,
+    complete: false
   },
   {
     description: 'Breathe',
-    complete: true,
-  },
+    complete: true
+  }
 ];
+
+const form = document.getElementById('add-todo-form');
+
+const inputElement = form.elements['todo-description'];
+
+
+inputElement.focus();
 
 // TODO Part 1:
 // create an event listener that is waiting for us to submit the form
@@ -34,7 +41,6 @@ let todos = [
 // addTask: add the task to the array, then call renderTaskList
 // renderTaskList: loop through the array, and add each li to the page
 
-const form = document.getElementById('add-todo-form');
 //console.log(form);
 // or use the tag directly:
 // const formV2 = document.querySelector('form');
@@ -43,8 +49,10 @@ const form = document.getElementById('add-todo-form');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  const inputElement = form.elements['todo-description'];
   //console.log(inputElement.value);
+
+  // TODO CHALLENGE: add validation
+  // so we can't enter a blank task
 
   // grab the value & pass it to addTask function
   addTask(inputElement.value);
