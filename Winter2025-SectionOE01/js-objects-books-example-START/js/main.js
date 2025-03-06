@@ -169,10 +169,6 @@ form.addEventListener('submit', (event) => {
 });
 
 
-
-
-
-
 function getAllBooks() {
   return [
   {"bookId":1,
