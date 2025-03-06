@@ -41,6 +41,8 @@ Sample object in the array of books returned from getAllBooks:
 // Step 2. create the renderBooks method which renders the books in the table.
 const renderBooks = (books) => {
   // for each book in the array, add a <tr> to the page
+  const tableBody = document.getElementById('book-rows');
+  tableBody.innerHTML = '';
 
   // v1: forEach
   // books.forEach((book) => {
@@ -66,7 +68,6 @@ const renderBooks = (books) => {
     <td>${book.numberOfRatings}</td>
   </tr>`;
 
-  const tableBody = document.getElementById('book-rows');
   tableBody.innerHTML += newRow;
   }
 }
@@ -124,17 +125,48 @@ const renderAuthorOptions = (books) => {
 // render options as soon as the page loads:
 renderAuthorOptions(allBooks);
 
-// TODO: 6. add the event listener to the form.
-// TODO: 7. get the form values.
-// TODO: 8. create the getBooksFilter function with 3 params: filterQuery, objectkey, and booklist
-//   - this is going to fiter out based on a given key.
-// TODO: 9. in your event handler:
-//   - get books.
-//   - pass the subset into a filter
-//   - render the booklist
 
+// Steps 6-9:
 
+const getFilteredBooks = (searchTerm, propertyName, books) => {
+  // use the filter function
+  // for each book, if the property value contains the search term, keep it
+  // e.g. if I'm searching by title, we check if the title includes the search term
+  // e.g. if I'm searching by author, we check if the author includes the search term
 
+  return books.filter( (book) => {
+    return book[propertyName].toLowerCase().includes(searchTerm.toLowerCase());
+    // we are looking at the lowercase version of the book's name or title, and checking to see if it includes the lowercase version of the search term
+  });
+}
+
+const form = document.querySelector('#books-filter-form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const titleSearch = form.elements['filter-query'].value.trim();
+  // console.log(titleSearch);
+
+  const authorSearch = form.elements['author'].value;
+  // console.log(authorSearch);
+
+  let filteredBooks = allBooks;
+  // console.log(filteredBooks);
+
+  // if we typed in a title
+  if(titleSearch.length > 0) {
+    filteredBooks = getFilteredBooks(titleSearch, 'title', filteredBooks);
+  }
+
+  // if we typed in an author
+  if(authorSearch.length > 0) {
+    filteredBooks = getFilteredBooks(authorSearch, 'author', filteredBooks);
+  }
+  //console.log(filteredBooks);
+
+  renderBooks(filteredBooks);
+});
 
 
 
