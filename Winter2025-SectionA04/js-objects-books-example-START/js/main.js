@@ -40,22 +40,61 @@ Sample object in the array of books returned from getAllBooks:
 
 
 
-//     TODO: 2. create the renderBooks method which renders the books in the table.
-//     Sample HTML for render books.
-//     <tr>
-//       <td>Insert book id here</td>
-//       <td>Insert Title here</td>
-//       <td>Insert Author here</td>
-//       <td>Insert Rating here</td>
-//       <td>Insert Number Of Ratings here</td>
-//     </tr>
-//     TODO: 3. select the table body, select the form and call the two function from the
-//     previous steps. This should show in the table.
-//     TODO: 4. create the getAuthors function and present the authors array step by step.
-//       - use map to display the authors
-//       - use filter to get distinct authors
-//       - present sort as a function on an array to show you can sort things!
+// 2. create the renderBooks method which renders the books in the table.
+
+const renderBooks = (books) => {
+  // for each book in the list, add a new <tr>
+  document.querySelector('#book-rows').innerHTML = '';
+
+  for(let book of books) {
+    // create a <tr> & add it to the page
+    document.querySelector('#book-rows').innerHTML += `<tr>
+      <td>${book.bookId}</td>
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.rating}</td>
+      <td>${book.numberOfRatings}</td>
+    </tr>`;
+  }
+}
+
+// call renderBooks when the page loads
+const myLibrary = getAllBooks();
+renderBooks(myLibrary);
+
+//4. create the getAuthors function
+const getAuthors = (books) => {
+  // use map to display the authors
+  const authors = books.map( (book) => {
+    return book.author;
+  } );
+  //console.log(authors);
+
+  // a slightly more concise syntax
+  const authors2 = books.map((book) => book.author);
+
+  // use filter to get distinct authors
+  const distinctAuthors = authors.filter( (author, index) => {
+    if(index === authors.indexOf(author)) {
+      return true; // this is the first instance of that author
+    }
+    else {
+      return false; // this is a duplicate
+    }
+  });
+  //console.log(distinctAuthors);
+
+  // sort things!
+  return distinctAuthors.sort();
+}
+
 //     TODO: 5. create the function renderAuthorOptions to add the options to the select.
+const renderAuthorOptions = (books) => {
+  // call getAuthors to turn our books into authors
+  // for each author, add an <option> to the dropdown
+  // <option value="AUTHOR_NAME">AUTHOR_NAME</option>
+}
+
 
 //     TODO: 6. add the event listener to the form.
 //     TODO: 7. get the form values.
