@@ -29,3 +29,5 @@ Some extensions I recommend:
     - Check your JavaScript for bugs & poor practices.
 - [VSCODE-TODO-HIGHLIGHT](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
     - If you like leaving yourself `TODO` comments in your code, this handy extension highlights them so you don't forget an important task.
+- [lit-html](https://marketplace.visualstudio.com/items?itemName=bierner.lit-html)
+    - Or this alternative makes TODOs show up in orange.
