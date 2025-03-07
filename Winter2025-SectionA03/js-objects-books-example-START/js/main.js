@@ -42,6 +42,7 @@ const renderBooks = (books) => {
   // iterate through elements in the given array
   // for each book, we will add a <tr> element to the page
   const tableBody = document.querySelector('#book-rows');
+  tableBody.innerHTML = '';
 
   books.forEach((book) => {
     tableBody.innerHTML += `<tr>
@@ -106,14 +107,33 @@ const renderAuthorOptions = (books) => {
 renderAuthorOptions(books);
 
 
-// TODO: 6. add the event listener to the form.
-// TODO: 7. get the form values.
-// TODO: 8. create the getBooksFilter function with 3 params: filterQuery, objectkey, and booklist
-//   - this is going to fiter out based on a given key.
-// TODO: 9. in your event handler:
-//   - get books.
-//   - pass the subset into a filter
-//   - render the booklist
+// 6. add the event listener to the form.
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+  // prevent the form from submitting
+  event.preventDefault();
+  // get the form values
+const title = document.querySelector('#books-filter').value.trim();
+const author = document.querySelector('#author-select').value;
+let filteredBooks = getAllBooks();
+  // if title isn't empty, filter by title
+  if (title) { // or if(title.length > 0)
+    filteredBooks = getFilteredBooks(title, 'title', filteredBooks);
+  }
+  // if author isn't empty, filter by author
+  if (author) { // or if(author.length > 0)
+    filteredBooks = getFilteredBooks(author, 'author', filteredBooks);
+  }
+  // render the booklist
+  renderBooks(filteredBooks);
+});
+
+// 8. create the getFilteredBooks function with 3 params: searchTerm, propertyName, and books
+const getFilteredBooks = (searchTerm, propertyName, books) => {
+    return books.filter( (book) => {
+      return book[propertyName].toLowerCase().includes(searchTerm.toLowerCase());
+    });
+}
 
 function getAllBooks() {
   return [
