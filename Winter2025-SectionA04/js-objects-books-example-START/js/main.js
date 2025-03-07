@@ -144,7 +144,7 @@ const getFilteredBooks = (searchTerm, propertyName, books) => {
   // check if the specified property includes the search term
   // check this for every book in the provided list
   let filteredBooks = books.filter((book) => {
-    return (book[propertyName].includes(searchTerm)); 
+    return (book[propertyName].toLowerCase().includes(searchTerm.toLowerCase())); 
   });
 
   return filteredBooks;
@@ -1104,5 +1104,3 @@ function getAllBooks() {
     },
   ];
 }
-
-// TODO: "finishing touches": checking reset, focus...
