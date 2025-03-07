@@ -116,17 +116,25 @@ const renderAuthorOptions2 = (books) => {
 renderAuthorOptions(myLibrary);
 
 
-//     TODO: 6. add the event listener to the form.
-//     TODO: 7. get the form values.
-//     TODO: 8. create the getBooksFilter function with 3 params: filterQuery, objectkey, and booklist
-//       - this is going to fiter out based on a given key.
-//     TODO: 9. in your event handler:
-//       - get books.
-//       - pass the subset into a filter
-//       - render the booklist
+// 6. add the event listener to the form.
+const form = document.querySelector('#books-filter-form');
+form.addEventListener('submit', (event) => {
+  // don't actually submit the form
+
+  // get the search terms from title & author
+
+  // if title has a value, search by title
+
+  // if author has a value, search by author
+  
+  // render the filtered books
+});
 
 
-
+//  8. create the getFilteredBooks function with 3 params: searchTerm, propertyName, and books
+const getFilteredBooks = (searchTerm, propertyName, books) => {
+  
+}
 
 
 function getAllBooks() {
