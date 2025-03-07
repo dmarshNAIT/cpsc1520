@@ -61,6 +61,8 @@ const renderBooks = (books) => {
 // call renderBooks when the page loads
 const myLibrary = getAllBooks();
 renderBooks(myLibrary);
+// or, combine them:
+renderBooks(getAllBooks());
 
 //4. create the getAuthors function
 const getAuthors = (books) => {
@@ -88,12 +90,30 @@ const getAuthors = (books) => {
   return distinctAuthors.sort();
 }
 
-//     TODO: 5. create the function renderAuthorOptions to add the options to the select.
+//   5. create the function renderAuthorOptions to add the options to the select.
 const renderAuthorOptions = (books) => {
   // call getAuthors to turn our books into authors
+  const distinctAuthors = getAuthors(books);
+  const dropdown = document.getElementById('author-select');
+
   // for each author, add an <option> to the dropdown
   // <option value="AUTHOR_NAME">AUTHOR_NAME</option>
+  distinctAuthors.forEach( (author) => {
+    dropdown.innerHTML += `<option value="${author}">${author}</option>`;
+  });
 }
+
+// or, as a SINGLE statement:
+const renderAuthorOptions2 = (books) => {
+  getAuthors(books).forEach( (author) => {
+    document
+      .getElementById('author-select')
+      .innerHTML += `<option value="${author}">${author}</option>`;
+  });
+}
+
+// render authors as soon as the page loads:
+renderAuthorOptions(myLibrary);
 
 
 //     TODO: 6. add the event listener to the form.
