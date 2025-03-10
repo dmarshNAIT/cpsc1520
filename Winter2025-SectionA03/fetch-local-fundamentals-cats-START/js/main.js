@@ -28,3 +28,13 @@ Use the following list as a guide to complete the task:
 - call the getCats function, and pass in the renderCats function as an argument
     - when the page loads, you should now see the cats rendered on the page
 */
+
+getCats(renderCats);
+
+const getCats = (callbackFunctionName) => {
+  
+}
+
+const renderCats = (catData) => {
+  
+}
