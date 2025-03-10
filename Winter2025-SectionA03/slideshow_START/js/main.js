@@ -49,4 +49,26 @@ document.querySelector('.carousel').addEventListener('click', function (evt){
     }
 }); 
 
-// TODO: make this work for keyboard events too!
+// make this work for keyboard events too!
+document.addEventListener('keydown', (event) => {
+    console.log('the event key is: ' + event.key);
+    console.log('the event code is: ' + event.code);
+    console.log(event);
+
+    // if I press my left arrow: pretend I clicked the "prev" control
+    if(event.code === 'ArrowLeft' || event.code === 'KeyA') {
+        // create a mouse event
+        const clickEvent = new MouseEvent('click', {bubbles: true});
+        // dispatch it from the "prev" control element
+        document.querySelector('.prev').dispatchEvent(clickEvent);
+    }
+
+    // if I press my right arrow: pretend I clicked the "next" control
+    else if(event.code === 'ArrowRight' || event.code === 'KeyD') {
+        // create a mouse event
+        const clickEvent = new MouseEvent('click', {bubbles: true});
+        // dispatch it from the "prev" control element
+        document.querySelector('.next').dispatchEvent(clickEvent);
+    }
+ 
+});
