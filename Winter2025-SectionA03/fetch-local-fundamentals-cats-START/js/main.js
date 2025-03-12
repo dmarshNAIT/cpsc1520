@@ -29,12 +29,35 @@ Use the following list as a guide to complete the task:
     - when the page loads, you should now see the cats rendered on the page
 */
 
-getCats(renderCats);
-
 const getCats = (callbackFunctionName) => {
-  
-}
+  // fetch from cats-with-jobs.json
+  fetch('data/cats-with-jobs.json')
+    // v1:
+    // .then((response) => {
+    //   // make sure the response is successfully received:
+    //   // console.log(response);
+    //   return response.json();
+    // })
+    // v2:
+    .then((response) => response.json())
+    .then((catData) =>  callbackFunctionName(catData) );
+};
 
 const renderCats = (catData) => {
-  
-}
+  const catDisplayDiv = document.querySelector('.cat-display');
+  catDisplayDiv.innerHTML = '';
+
+  // iterate through the elements in catData,
+  // + add each to the HTML
+  for(let cat of catData) {
+    catDisplayDiv.innerHTML += `<div class="mt-3 card" >
+        <img class="card-img-top" src="${cat.picture}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">${cat.name}</h5>
+        <p class="card-text">${cat.text}</p>
+        </div>
+    </div>`;
+  }
+};
+
+getCats(renderCats);
