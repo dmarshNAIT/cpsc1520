@@ -26,6 +26,11 @@ Use the following list as a guide to complete the task:
 
 (async function () {
   // async is needed because we have await statements within this function
+
+  /**
+   * Fetch data from a local JSON file
+   * @returns an array of cat objects
+   */
   async function getCats() {
     // await is needed because fetch returns a Promise
     let response = await fetch('data/cats-with-jobs.json');
