@@ -1,12 +1,17 @@
 [
     {
-        "firstName": "Jane",
-        "lastName": "Doe",
-        "age": 27
+        "firstName": "Bruce",
+        "lastName": "Wayne",
+        "age": 42
     },
     {
-        "firstName": "Sally",
-        "lastName": "Anne",
-        "age": 33
+        "firstName": "Joe",
+        "lastName": "Chill",
+        "age": 37
+    },
+    {
+        "firstName": "Ian",
+        "lastName": "Malcolm",
+        "age": 60
     }
 ]
