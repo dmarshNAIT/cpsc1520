@@ -31,7 +31,7 @@ Use the following list as a guide to complete the task:
    * Fetch data from a local JSON file
    * @returns an array of cat objects
    */
-  async function getCats() {
+  const getCats = async () => {
     // await is needed because fetch returns a Promise
     let response = await fetch('data/cats-with-jobs.json');
     let catData = await response.json();
@@ -39,7 +39,7 @@ Use the following list as a guide to complete the task:
   }
 
   // test:
-  //getCats();
+  getCats();
 
   // - create a renderCats function that will accept a single parameter, which
   //   should be an array of cat data
