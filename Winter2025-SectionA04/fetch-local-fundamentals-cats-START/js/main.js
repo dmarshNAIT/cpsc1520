@@ -28,3 +28,27 @@ Use the following list as a guide to complete the task:
 - call the getCats function, and pass in the renderCats function as an argument
     - when the page loads, you should now see the cats rendered on the page
 */
+
+const getCats = (callbackFunction) => {
+  // fetch the info from the json file, then call the callbackFunction
+  fetch('data/cats-with-jobs.json')
+    .then((response) => response.json())
+    .then((data) => callbackFunction(data));
+}
+
+const renderCats = (catArray) => {
+  // iterate through the array and render cats on the screen
+  const catDisplay = document.querySelector('.cat-display');
+  catDisplay.innerHTML = '';
+  catArray.forEach((cat) => {
+    catDisplay.innerHTML += `<div class="mt-3 card" >
+        <img class="card-img-top" src="${cat.picture}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">${cat.name}</h5>
+        <p class="card-text">${cat.text}</p>
+        </div>
+    </div>`;
+  });
+}
+
+getCats(renderCats);
