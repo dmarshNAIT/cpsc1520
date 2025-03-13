@@ -24,22 +24,17 @@ Use the following list as a guide to complete the task:
 //       when the data has been resolved, and passed the array of fetched cats
 //       as a single argument
 
-(function () {
-  const getCats = (callbackFunction) => {
-    fetch('./data/cats-with-jobs.json')
-      // v1: the "original" syntax:
-      // .then((response) => {
-      //   return response.json();
-      // })
-      // v2: the shorter syntax:
-      .then((response) => response.json())
-      .then((catData) => {
-        callbackFunction(catData);
-      });
-  };
+(async function () {
+  // async is needed because we have await statements within this function
+  async function getCats() {
+    // await is needed because fetch returns a Promise
+    let response = await fetch('data/cats-with-jobs.json');
+    let catData = await response.json();
+    return catData;
+  }
 
   // test:
-  getCats(console.log);
+  //getCats();
 
   // - create a renderCats function that will accept a single parameter, which
   //   should be an array of cat data
@@ -61,7 +56,5 @@ Use the following list as a guide to complete the task:
     }
   };
 
-  // - call the getCats function, and pass in the renderCats function as an argument
-  //     - when the page loads, you should now see the cats rendered on the page
-  getCats(renderCats);
-})(); // IIFE
+  renderCats(await getCats());
+})();
