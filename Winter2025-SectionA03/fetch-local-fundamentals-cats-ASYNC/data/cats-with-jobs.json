@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Albert Whiskers",
+        "picture": "img/angry-coding-cat.jpg",
+        "text": "Fetch is too difficult"
+    },
+    {
+        "name": "Aioli",
+        "picture": "img/carpenter-cat.jpg",
+        "text": "Just getting my work done"
+    },
+    {
+        "name": "Spruce",
+        "picture": "img/cat-fixing-car.jpg",
+        "text": "Wheeling around at work."
+    },
+    {
+        "name": "Wilma",
+        "picture": "img/cat-fixing-lightbulb.png",
+        "text": "Gotta make sure the lights are on."
+    },
+    {
+        "name": "Lily",
+        "picture": "img/cat-with-truck.jpg",
+        "text": "Gotta make sure the lights are on."
+    }
+]

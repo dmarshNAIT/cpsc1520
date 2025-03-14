@@ -30,20 +30,12 @@ Use the following list as a guide to complete the task:
 */
 
 // create an immediately-invoked function expression (IIFE)
-(function () {
+(async function () {
 
-  const getCats = (callbackFunctionName) => {
-    // fetch from cats-with-jobs.json
-    fetch('data/cats-with-jobs.json')
-      // v1:
-      // .then((response) => {
-      //   // make sure the response is successfully received:
-      //   // console.log(response);
-      //   return response.json();
-      // })
-      // v2:
-      .then((response) => response.json())
-      .then((catData) => callbackFunctionName(catData));
+  const getCats = async() => {
+    let response = await fetch('data/cats-with-jobs.json');
+    let catData =  await response.json();
+    return catData;
   };
 
   const renderCats = (catData) => {
@@ -63,6 +55,6 @@ Use the following list as a guide to complete the task:
     }
   };
 
-  getCats(renderCats);
+  renderCats(await getCats());
 
 })();
