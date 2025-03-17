@@ -39,6 +39,10 @@ Use the following list as a guide to complete the task:
   const results = getCats();
   console.log(results);
 
+  /**
+   * Render the cats as divs on the screen.
+   * @param {Array} catArray An array containing cat objects.
+   */
   const renderCats = (catArray) => {
     // iterate through the array and render cats on the screen
     const catDisplay = document.querySelector('.cat-display');
