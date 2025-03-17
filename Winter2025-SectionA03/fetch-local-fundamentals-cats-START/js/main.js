@@ -46,6 +46,10 @@ Use the following list as a guide to complete the task:
       .then((catData) => callbackFunctionName(catData));
   };
 
+  /**
+   * Adds divs to the HTML document to represent cat objects.
+   * @param {Array} catData An array of cat objects
+   */
   const renderCats = (catData) => {
     const catDisplayDiv = document.querySelector('.cat-display');
     catDisplayDiv.innerHTML = '';
