@@ -4,8 +4,9 @@ let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 // TODO part 1: create a function called getCalendar that takes 2 params: year & month
 
 // create variables to represent the first & last days of the month
-let year = 2025;
-let month = 2; // month starts at 0 for January
+let today = new Date();
+let year = today.getFullYear();
+let month = today.getMonth(); // month starts at 0 for January
 let firstDay = new Date(year, month, 1);
 let lastDay = new Date(year, month + 1, 0); //underflow
 
