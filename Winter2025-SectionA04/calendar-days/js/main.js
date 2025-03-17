@@ -18,8 +18,8 @@ let cal = '<table border="1"><tr>';
 
 // print out the names of the days as <th> elements
 for (let idx = 0; idx < days.length; idx += 1) {
-  // add each day name to the row
-  cal += '<th>' + days[idx] + '</th>';
+    // add each day name to the row
+    cal += '<th>' + days[idx] + '</th>';
 }
 
 // end that row & start another
@@ -27,27 +27,32 @@ cal += '</tr><tr>';
 
 // now, loop through the days of the month, from 0 to the last day.
 let blanks = 0; // keep track of how many blank days we've made
-for(let counter = 0; counter < lastDay.getDate(); counter++) {
+for (let counter = 0; counter < lastDay.getDate(); counter++) {
     // + blank elements for "empty" days e.g. if the month doesn't start on Sunday
     // if the month doesn't start on Sunday:
     if (counter != firstDay.getDay() && blanks == 0) {
         // use getDay() to figure out how many blank cells to create
-        for(blanks = 0; blanks < firstDay.getDay(); blanks++) {
+        for (blanks = 0; blanks < firstDay.getDay(); blanks++) {
             cal += '<td></td>'
         }
     }
 
     // + a <td> for the current day
-    cal +='<td>' + (counter + 1) + '</td>'; 
-    
-    // TODO: close a row if needed
-    
-    // TODO: start a new row if needed
+    cal += '<td>' + (counter + 1) + '</td>';
+
+    // close a row if needed
+    if ((blanks + counter + 1) % 7 == 0) {
+        cal += '</tr>';
+        // start a new row if needed
+        if (counter <= lastDay.getDate()) {
+            cal += '<tr>';
+        }
+    }
 
 }
 
 // close the table; ready for display
-cal += '</tr></table>';
+cal += '</table>';
 
 document.querySelector('.calendar').innerHTML = cal;
 
