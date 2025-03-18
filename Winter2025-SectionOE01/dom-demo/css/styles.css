@@ -1,0 +1,6 @@
+div:first-of-type {
+    background-color: skyblue;
+}
+div:last-of-type {
+    background-color:  greenyellow;
+}
