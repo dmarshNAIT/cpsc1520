@@ -15,5 +15,23 @@ p6.appendChild(fanta);
 const bubbleTea = div1.children[1];
 div1.insertBefore(p6, bubbleTea);
 
-// TODO: let's use setAttribute to add an id to Dr Pepper, but using eggnog as our starting point
+// let's use setAttribute to add an id to Dr Pepper, but using eggnog as our starting point
+eggnog
+    .parentElement
+    .parentElement
+    .nextElementSibling
+    .firstElementChild
+    .setAttribute('id', 'we-did-it');
 
+// OR the longest route possible, hitting EVERY element
+eggnog
+    .parentElement
+    .previousElementSibling
+    .previousElementSibling
+    .previousElementSibling
+    .previousElementSibling
+    .parentElement
+    .parentElement
+    .lastElementChild
+    .firstElementChild
+    .setAttribute('id', 'a-very-long-way-to-go');
