@@ -64,10 +64,7 @@ const addTask = (newTaskDescription) => {
   listElement.appendChild(liElement);
 }
 
-// TODO: another event listener that is waiting for us to click on a button
-// if we click "remove": remove the element
-// if we click "upvote": +1 to the counter
-// if we click "downvote": -1 from the counter
+// another event listener that is waiting for us to click on a button
 listElement.addEventListener('click', (event) => {
     // if the thing we clicked on contains the "remove" class:
     // remove that element
