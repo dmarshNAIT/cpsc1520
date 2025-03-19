@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+
+  <!-- Link to Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <title>Stopwatch Example</title>
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1>StopWatch</h1>
+    <h2 class="display-1 timer-value">0:00</h2>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-danger stop mt-3">Stop</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-success start mt-3">Start</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary lap mt-3">Lap</button>
+      </div>
+    </div>
+    <h5 class="pt-4">Laps</h5>
+    <ul class="list-group all-laps mt-3"></ul>
+  </div>
+</body>
+
+</html>
