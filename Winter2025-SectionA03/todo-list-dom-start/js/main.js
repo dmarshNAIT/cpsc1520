@@ -77,7 +77,6 @@ listElement.addEventListener('click', (event) => {
       const spanElement = event.target.previousElementSibling;
       spanElement.textContent = Number(spanElement.textContent) + 1;
     }
-
     // otherwise if we clicked on "downvote"
     // -1 from the counter
     else if (event.target.classList.contains('downvote')) {
