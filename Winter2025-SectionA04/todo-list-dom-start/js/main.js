@@ -54,24 +54,22 @@ const addTask = (taskDescription) => {
   const downvoteText = document.createTextNode('downvote');
   downvoteButton.appendChild(downvoteText);
   li.appendChild(downvoteButton);
-  
-}
+};
 
 // an event listener that is waiting for clicks on the buttons
 ul.addEventListener('click', (event) => {
   // if I click "remove", remove that li
-  if (  event.target.classList.contains('remove')   ) {
+  if (event.target.classList.contains('remove')) {
     event.target.parentElement.remove();
   }
   // if I click "upvote", +1 to the counter
-  else if  (  event.target.classList.contains('upvote')   ) {
+  else if (event.target.classList.contains('upvote')) {
     const span = event.target.previousElementSibling;
     span.textContent = Number(span.textContent) + 1;
   }
   // if I click "downvote", -1 from the counter
-  else if  (  event.target.classList.contains('downvote')   ) {
+  else if (event.target.classList.contains('downvote')) {
     const span = event.target.previousElementSibling.previousElementSibling;
-    span.textContent = span.textContent - 1;
+    span.textContent = Number(span.textContent) - 1;
   }
-
 });
