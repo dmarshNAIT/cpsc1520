@@ -1,0 +1,7 @@
+div:first-child {
+    background-color: salmon;
+}
+
+div:last-of-type {
+    background-color: greenyellow;
+}
