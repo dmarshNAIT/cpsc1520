@@ -7,12 +7,11 @@ const lapList = document.querySelector('.all-laps');
 
 // 2. add an event listener for the start button
 startButton.addEventListener('click', () => {
-    if(!isStopWatchRunning)
-        startTimer();
+  if (!isStopWatchRunning) startTimer();
 });
 
 // 3. create variables for the currentTime, an isStopWatchRunning and the timerInterval
-let currentTime = 0;  // hundredths of a second (centisecond)
+let currentTime = 0; // hundredths of a second (centisecond)
 let isStopWatchRunning = false;
 let timerInterval; // timer object
 
@@ -22,40 +21,70 @@ let timerInterval; // timer object
 //         - set the "time interval" or "delay" to 10ms
 //     - in the setInterval callback function, increment the time
 const startTimer = () => {
-    isStopWatchRunning = true;
+  isStopWatchRunning = true;
 
-    timerInterval = setInterval( () => {
-     currentTime++;
-     setTimerValue();
-    }, 10); // executes every 10 ms = every hundredth of a second
-}
+  timerInterval = setInterval(() => {
+    currentTime++;
+    setTimerValue();
+  }, 10); // executes every 10 ms = every hundredth of a second
+};
 
 // 5. create function named setTimerValue that will display the time on the page
 //     - call this function in the setInterval callback from the previous step
 //     - make it more readable (i.e. seconds:hundredths of seconds)
 const setTimerValue = () => {
-    document
-        .querySelector('.timer-value')
-        .textContent = getFormattedTime(currentTime);
-}
+  document.querySelector('.timer-value').textContent =
+    getFormattedTime(currentTime);
+};
 
 const getFormattedTime = (centiseconds) => {
-    const seconds = Math.floor(centiseconds / 100);
+  const seconds = Math.floor(centiseconds / 100);
 
-    let hundredths = centiseconds % 100;
-    if(hundredths < 10)
-        hundredths = '0' + hundredths;
+  let hundredths = centiseconds % 100;
+  if (hundredths < 10) hundredths = '0' + hundredths;
 
-    return seconds + ':' + hundredths;
-}
+  return seconds + ':' + hundredths;
+};
 
 // 6. in the stop button listener, set the isStopWatchRunning to false and clear the interval
 //     - observe the page how the timer stops
 //     - if you click start, the timer continues
+stopButton.addEventListener('click', () => {
+  if (isStopWatchRunning) {
+    clearInterval(timerInterval);
+    isStopWatchRunning = false;
+  }
+});
+
+let lastLapTime = 0;
+let lapNumber = 1;
 // 7. create a function to add new lap
 //     - get the lap time which is the current lap time minus the last lap time
 //     - display it on the page with the following html (in all laps section)
 //          <li class="list-group-item">Lap CURRENT LAP: CURRENT LAP TIME</li>
 //     - increase the currentLap
 //     - add the lastLapTime
+const addNewLap = () => {
+  // calculate lap time
+  let currentLapTime = currentTime - lastLapTime;
+
+  // add a li
+  const li = document.createElement('li');
+  li.classList.add('list-group-item');
+  li.textContent = `Lap ${lapNumber}: ${getFormattedTime(currentLapTime)}`;
+  lapList.appendChild(li);
+
+  // update both variables
+  lapNumber++;
+  lastLapTime = currentTime;
+};
+
 // 8. in the add lap event listener, call the function above
+lapButton.addEventListener('click', () => {
+  if (isStopWatchRunning) addNewLap();
+});
+
+// BONUS CHALLENGE:
+// clear the timer
+// option A: add another button called "clear" or "reset"
+// option B: add another branch to the stop button
