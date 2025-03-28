@@ -52,16 +52,46 @@ const getPrettyTime = (centiseconds) => {
 //     - observe the page how the timer stops
 //     - if you click start, the timer continues
 stopButton.addEventListener('click', () => {
-    clearInterval(timerInterval);
-    isStopWatchRunning = false;
+    if (isStopWatchRunning) {
+        clearInterval(timerInterval);
+        isStopWatchRunning = false;
+    }
+    // otherwise, reset 
 });
 
+let lastLapTime = 0;
+let lapNumber = 1;
 // 7. create a function to add new lap
 //     - get the lap time which is the current lap time minus the last lap time
 //     - display it on the page with the following html (in all laps section)
 //          <li class="list-group-item">Lap CURRENT LAP: CURRENT LAP TIME</li>
 //     - increase the currentLap
 //     - add the lastLapTime
+const addNewLap = () => {
+    let currentLapTime = currentTime - lastLapTime;
+
+    // create a new li element
+    const li = document.createElement('li');
+    // add a class
+    li.classList.add('list-group-item');
+    // update the text
+    li.textContent = `Lap ${lapNumber}: ${getPrettyTime(currentLapTime)}`;
+    // then add the li to the page
+    laps.appendChild(li);
+
+    lapNumber++;
+    lastLapTime = currentTime;
+}
 
 
 // 8. in the add lap event listener, call the function above
+lapButton.addEventListener('click', () => {
+    if (isStopWatchRunning) {
+        addNewLap();
+    }
+});
+
+// CHALLENGE ITEM:
+// add reset
+// option 1: add a reset button
+// option 2: if we click the stop button twice, reset the timer
