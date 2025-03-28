@@ -7,7 +7,7 @@ const laps = document.querySelector('.all-laps');
 
 // 2. add an event listener for the start button
 startButton.addEventListener('click', () => {
-    if(!isStopWatchRunning) {
+    if (!isStopWatchRunning) {
         startTimer();
     }
 });
@@ -26,21 +26,42 @@ const startTimer = () => {
     isStopWatchRunning = true;
 
     timerInterval = setInterval(() => {
+        // every 10 ms, we want to update the time and then show that on the page:
         currentTime++;
-        console.log(currentTime);
+        setTimerValue();
     }, 10); // every 10ms, our page will update
 }
 
 // 5. create function named setTimerValue that will display the time on the page
 //     - call this function in the setInterval callback from the previous step
 //     - make it more readable (i.e. seconds:hundredths of seconds)
+const setTimerValue = () => {
+    document.querySelector('.timer-value').innerText = getPrettyTime(currentTime);
+}
+
+const getPrettyTime = (centiseconds) => {
+    const seconds = Math.floor(centiseconds / 100);
+    let hundredths = centiseconds % 100;
+
+    if (hundredths < 10) hundredths = '0' + hundredths;
+
+    return seconds + ':' + hundredths;
+}
+
 // 6. in the stop button listener, set the isStopWatchRunning to false and clear the interval
 //     - observe the page how the timer stops
 //     - if you click start, the timer continues
+stopButton.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    isStopWatchRunning = false;
+});
+
 // 7. create a function to add new lap
 //     - get the lap time which is the current lap time minus the last lap time
 //     - display it on the page with the following html (in all laps section)
 //          <li class="list-group-item">Lap CURRENT LAP: CURRENT LAP TIME</li>
 //     - increase the currentLap
 //     - add the lastLapTime
+
+
 // 8. in the add lap event listener, call the function above
