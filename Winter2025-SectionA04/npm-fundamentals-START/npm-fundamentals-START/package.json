@@ -1,0 +1,19 @@
+{
+  "name": "npm-fundamentals-start",
+  "version": "1.0.0",
+  "description": "NPM essentially allows us to use the wonderful world of open source to create awesome packages.",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.14.4"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.8"
+  }
+}
