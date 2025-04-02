@@ -4,8 +4,7 @@ Read it, a simple reddit clone.
 1. Setup npm, parcel and packages
     - install bootstrap
     - install parcel and set up
-    - change the index.html file to point to an index.js file where we
-        - import bootstrap
+init        - import bootstrap
         - import main.js
 2. Run the base server (in a separate folder) and ensure you understand how to interact with the api.
     NOTE: look at backend-json-server with the readit-db.json
