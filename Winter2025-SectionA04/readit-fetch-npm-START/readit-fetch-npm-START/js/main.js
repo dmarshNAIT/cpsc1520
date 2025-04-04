@@ -1,7 +1,7 @@
 /*
 Read it, a simple reddit clone.
 
-1. Setup npm, parcel and packages
+1. Set up npm, parcel and packages
     - install bootstrap
     - install parcel and set up
     - change the index.html file to point to an index.js file where we
@@ -26,6 +26,11 @@ Note: talk about REST Clients
 - Postman (https://www.postman.com/)
 
 */
+// TODO: IMPORT all the functions we created in api.js
+import {getAllPosts} from "./api.js";
+getAllPosts().then( (posts) => {
+        console.log(posts);
+});
 
 let allItems = document.querySelector(".readit-items")
 

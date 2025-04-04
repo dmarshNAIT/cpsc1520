@@ -1,0 +1,19 @@
+{
+  "name": "readit-fetch-npm-start",
+  "version": "1.0.0",
+  "description": "",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.4"
+  },
+  "devDependencies": {
+    "parcel": "^2.14.4"
+  }
+}
