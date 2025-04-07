@@ -160,11 +160,11 @@
       });
     }
   }
-})({"7oMV4":[function(require,module,exports,__globalThis) {
+})({"7DrE3":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 1234;
+var HMR_SERVER_PORT = 52449;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -703,10 +703,14 @@ Note: talk about REST Clients
 - Boomerang (https://boomerangapi.com/)
 - Postman (https://www.postman.com/)
 
-*/ // TODO: IMPORT all the functions we created in api.js
+*/ // IMPORT all the functions we created in api.js
 var _apiJs = require("./api.js");
 (0, _apiJs.getAllPosts)().then((posts)=>{
     console.log(posts);
+    // add each post to the page
+    posts.forEach((post)=>{
+        addReaditItem(post.title, post.url, post.score, post.id);
+    });
 });
 let allItems = document.querySelector(".readit-items");
 let readitForm = document.querySelector("#add-readit-item");
@@ -718,16 +722,24 @@ readitForm.addEventListener("submit", (event)=>{
     let url = form.elements["item-url"];
     console.log(title.value);
     console.log(url.value);
-    addReaditItem(title.value, url.value);
+    (0, _apiJs.createNewPost)({
+        title: title.value,
+        url: url.value,
+        score: 0
+    }).then((post)=>{
+        addReaditItem(post.title, post.url, post.score, post.id);
+    });
     // reset elements
     title.value = "";
     url.value = "";
 });
-const addReaditItem = (title, url)=>{
+const addReaditItem = (title, url, score, id)=>{
     // create the card
     let card = document.createElement("div");
     card.classList.add("card", "mt-2") // adds both classes
     ;
+    // add the id as a data attribute of the HTML element
+    card.setAttribute('post-id', id);
     //create card body
     let cardBody = document.createElement("div");
     cardBody.classList.add("card-body", "d-flex", "flex-row");
@@ -736,9 +748,12 @@ const addReaditItem = (title, url)=>{
     upButton.classList.add("btn", "vote-up", "m-1", "btn-secondary");
     upButton.textContent = "up";
     // create score
-    let score = document.createElement("p");
-    score.classList.add("score", "h4", "m-2");
-    score.textContent = '0';
+    let scoreElement = document.createElement("p");
+    scoreElement.classList.add("score", "h4", "m-2");
+    // if we have a score, use it
+    // otherwise, default to 0
+    if (score) scoreElement.textContent = score;
+    else scoreElement.textContent = '0';
     // create down button
     let downButton = document.createElement("button");
     downButton.classList.add("btn", "vote-down", "m-1", "btn-secondary");
@@ -752,7 +767,7 @@ const addReaditItem = (title, url)=>{
     // patch altogether
     card.appendChild(cardBody);
     cardBody.appendChild(upButton);
-    cardBody.appendChild(score);
+    cardBody.appendChild(scoreElement);
     cardBody.appendChild(downButton);
     cardBody.appendChild(newLink);
     // append to list
@@ -825,16 +840,48 @@ const downAnimation = (element)=>{
 // create a function to get all the posts from the server
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// create a function to create a NEW post
-// create a function to UPDATE an existing post
 // when we're done, export all of them so we can use them in main.js
 parcelHelpers.export(exports, "getAllPosts", ()=>getAllPosts);
+parcelHelpers.export(exports, "createNewPost", ()=>createNewPost);
+parcelHelpers.export(exports, "updatePost", ()=>updatePost);
 const getAllPosts = ()=>{
-    const BASE_URL = 'http://localhost:3000';
-    return fetch(`${BASE_URL}/posts`).then((response)=>{
+    const BASE_URL1 = 'http://localhost:3000';
+    return fetch(`${BASE_URL1}/posts`).then((response)=>{
         return response.json();
     }).then((postsData)=>{
         return postsData;
+    });
+};
+// create a function to create a NEW post
+const createNewPost = ({ title, url, score })=>{
+    return fetch(`${BASE_URL}/posts`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title,
+            url,
+            score
+        })
+    }).then((response)=>{
+        return response.json();
+    }).then((post)=>{
+        return post;
+    });
+};
+// create a function to UPDATE an existing post
+const updatePost = (params)=>{
+    return fetch(`${BASE_URL}/posts`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(params) // TODO: replace with actual params
+    }).then((response)=>{
+        return response.json();
+    }).then((post)=>{
+        return post;
     });
 };
 
@@ -868,6 +915,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["7oMV4","NhzJs"], "NhzJs", "parcelRequirec3a0", {})
+},{}]},["7DrE3","NhzJs"], "NhzJs", "parcelRequirec3a0", {})
 
 //# sourceMappingURL=readit-fetch-npm-START.0be11312.js.map

@@ -26,10 +26,15 @@ Note: talk about REST Clients
 - Postman (https://www.postman.com/)
 
 */
-// TODO: IMPORT all the functions we created in api.js
-import {getAllPosts} from "./api.js";
+// IMPORT all the functions we created in api.js
+import {getAllPosts, createNewPost, updatePost} from "./api.js";
+
 getAllPosts().then( (posts) => {
         console.log(posts);
+        // add each post to the page
+        posts.forEach( (post) => {
+            addReaditItem(post.title, post.url, post.score, post.id) ;
+        })
 });
 
 let allItems = document.querySelector(".readit-items")
@@ -44,16 +49,21 @@ readitForm.addEventListener("submit", (event)=> {
     let url = form.elements["item-url"]
     console.log(title.value)
     console.log(url.value)
-    addReaditItem(title.value, url.value)
+    createNewPost({title: title.value, url: url.value, score: 0})
+    .then( (post) => {
+        addReaditItem(post.title, post.url, post.score, post.id) 
+    } );
     // reset elements
     title.value = ""
     url.value = ""
 })
 
-const addReaditItem = (title, url)=> {
+const addReaditItem = (title, url, score, id)=> {
     // create the card
     let card = document.createElement("div")
     card.classList.add("card", "mt-2") // adds both classes
+    // add the id as a data attribute of the HTML element
+    card.setAttribute('post-id', id);
     //create card body
     let cardBody = document.createElement("div")
     cardBody.classList.add("card-body", "d-flex", "flex-row")
@@ -62,9 +72,16 @@ const addReaditItem = (title, url)=> {
     upButton.classList.add("btn", "vote-up", "m-1", "btn-secondary")
     upButton.textContent = "up"
     // create score
-    let score = document.createElement("p")
-    score.classList.add("score", "h4", "m-2")
-    score.textContent = '0'
+    let scoreElement = document.createElement("p")
+    scoreElement.classList.add("score", "h4", "m-2")
+    // if we have a score, use it
+    // otherwise, default to 0
+    if (score) {
+        scoreElement.textContent = score;
+    }
+    else {
+        scoreElement.textContent = '0'
+    }
     // create down button
     let downButton = document.createElement("button")
     downButton.classList.add("btn", "vote-down", "m-1", "btn-secondary")
@@ -79,7 +96,7 @@ const addReaditItem = (title, url)=> {
     // patch altogether
     card.appendChild(cardBody)
     cardBody.appendChild(upButton)
-    cardBody.appendChild(score)
+    cardBody.appendChild(scoreElement)
     cardBody.appendChild(downButton)
     cardBody.appendChild(newLink)
 
