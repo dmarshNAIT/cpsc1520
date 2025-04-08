@@ -6,3 +6,4 @@ import '../css/main.css'
 
 // import EVERYTHING from main.js
 import './main.js';
+// it's best to specify what we are importing
