@@ -4,7 +4,7 @@
       "id": 1,
       "title": "JS Conf EU",
       "url": "https://www.youtube.com/c/JSConfEU",
-      "score": 10
+      "score": 21
     },
     {
       "id": 2,
@@ -22,12 +22,12 @@
       "id": 4,
       "title": "Pycon US Conference talk links",
       "url": "https://www.youtube.com/c/PyConUS",
-      "score": 13
+      "score": 18
     },
     {
       "title": "please work",
       "url": "http://localhost:52080/",
-      "score": 0,
+      "score": 10,
       "id": 5
     }
   ]

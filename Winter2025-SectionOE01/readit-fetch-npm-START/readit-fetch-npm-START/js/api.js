@@ -32,6 +32,22 @@ const createNewPost = ({ title, url, score }) => {
 };
 
 // create a function that lets us update the score of an existing post
+const updateScore = ({ id, score }) => {
+    return fetch(`${BASE_URL}/posts/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({score: score }), 
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((post) => {
+        console.log(post);
+        return post;
+      });
+  };
 
 // export all these functions, so they can be used in main.js
-export { getAllPosts, createNewPost };
+export { getAllPosts, createNewPost, updateScore };

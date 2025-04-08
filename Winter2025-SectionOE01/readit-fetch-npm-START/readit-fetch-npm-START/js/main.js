@@ -25,7 +25,7 @@ Note: talk about REST Clients
 - Postman (https://www.postman.com/)
 
 */
-import { getAllPosts, createNewPost } from './api.js';
+import { getAllPosts, createNewPost, updateScore } from './api.js';
 
 // call getAllPosts, then add each post to the page
 getAllPosts().then((posts) => {
@@ -34,6 +34,7 @@ getAllPosts().then((posts) => {
   // v2: add each post to the page
   posts.forEach((post) => {
     addReaditItem(post.title, post.url, post.score, post.id);
+    // known small bug: the original posts are not ordered
   });
 });
 
@@ -118,19 +119,31 @@ const voteUp = (buttonElement) => {
   let cardBodyElement = buttonElement.parentNode;
   let scoreElement = cardBodyElement.children[1]; // the second element
   changeScore(scoreElement, 1);
-  changeItemOrder(cardBodyElement);
 };
 
 const voteDown = (buttonElement) => {
   let cardBodyElement = buttonElement.parentNode;
   let scoreElement = cardBodyElement.children[1]; // the second element
   changeScore(scoreElement, -1);
-  changeItemOrder(cardBodyElement);
 };
 
 const changeScore = (scoreElement, value) => {
   let currentScore = parseInt(scoreElement.textContent);
-  scoreElement.textContent = currentScore + value;
+  
+  const id = scoreElement.parentNode.parentNode.getAttribute('data-post-id');
+  console.log(id);
+  const newScore = currentScore + value;
+  
+  // call updateScore
+  updateScore({id: id, score: newScore})
+  // THEN change the text content on the page
+  // THEN call changeItemOrder
+  .then((post) =>  {
+    console.log(post);
+    scoreElement.textContent = post.score;
+    changeItemOrder(scoreElement.parentNode);
+  });
+
 };
 
 const changeItemOrder = (cardBodyElement) => {
