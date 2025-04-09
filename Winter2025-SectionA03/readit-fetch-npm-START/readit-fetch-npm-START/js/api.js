@@ -31,7 +31,25 @@ const createNewPost = ({ title, url, score }) => {
     });
 };
 
-// TODO: a function that UPDATEs a single post on the server
+//  a function that UPDATEs a single post on the server
+const updateScore = ({ id, score }) => {
+  return fetch(`${BASE_URL}/posts/${id}`, {
+    method: 'PATCH',
+    headers: {
+      // headers help specify more information that the server needs.
+      'Content-Type': 'application/json'
+    }, // above this just means that we're saying "we're sending json" so the server understands.
+    body: JSON.stringify({ score: score })
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((post) => {
+      console.log(post);
+      return post;
+    });
+};
 
-// TODO: export 'em
-export { getAllPosts , createNewPost};
+
+// export 'em
+export { getAllPosts , createNewPost, updateScore};

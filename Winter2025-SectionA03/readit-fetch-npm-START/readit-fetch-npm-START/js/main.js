@@ -27,7 +27,7 @@ Note: talk about REST Clients
 
 */
 
-import { getAllPosts, createNewPost } from "./api.js"
+import { getAllPosts, createNewPost, updateScore } from "./api.js"
 
 // call getAllPosts
 // then we will call addReadItItem
@@ -124,19 +124,31 @@ const voteUp = (buttonElement) => {
     let cardBodyElement = buttonElement.parentNode
     let scoreElement = cardBodyElement.children[1] // the second element
     changeScore(scoreElement, 1)
-    changeItemOrder(cardBodyElement)
+    //changeItemOrder(cardBodyElement) // this moves to changeScore
 }
 
 const voteDown = (buttonElement)=> {
     let cardBodyElement = buttonElement.parentNode
     let scoreElement = cardBodyElement.children[1] // the second element
     changeScore(scoreElement, -1)
-    changeItemOrder(cardBodyElement)
+    //changeItemOrder(cardBodyElement) // this moves to changeScore
 }
 
 const changeScore = (scoreElement, value) => {
     let currentScore = parseInt(scoreElement.textContent)
-    scoreElement.textContent = currentScore + value
+
+    // call updateScore
+    // then update the textContent
+    // & changeItemOrder()
+
+    const id = scoreElement.parentNode.parentNode.getAttribute('data-post-id');
+    const newScore = currentScore + value;
+
+    updateScore({id, score: newScore})
+    .then((post) => {
+        scoreElement.textContent = post.score;
+        changeItemOrder(scoreElement.parentNode);
+    });
 }
 
 const changeItemOrder = (cardBodyElement) => {
