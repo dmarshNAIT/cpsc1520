@@ -21,39 +21,50 @@ class Card {
     this.toLearnList.appendChild(this.element);
   }
 
-
   // 8. create a function called addEventListeners
   //     - select the "remove" button using the dom api and add a click event listener to that button
   //     - select the "top priority" button using the dom api and add a click event listener to that button
   //     - select the "i get this" button using the dom api and add a click event listener to that button
   addEventListeners() {
-    const removeButton = this.element.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling;
+    const removeButton =
+      this.element.firstElementChild.firstElementChild.nextElementSibling
+        .nextElementSibling;
 
     removeButton.addEventListener('click', () => {
-        this.element.remove();
+      this.element.remove();
     });
-
 
     const topPriorityButton = removeButton.nextElementSibling;
     topPriorityButton.addEventListener('click', () => {
-        this.moveToTop();
+      this.moveToTop();
     });
 
     const iGetThisButton = topPriorityButton.nextElementSibling;
     iGetThisButton.addEventListener('click', () => {
-        this.moveToUnderstood();
+      this.moveToUnderstood();
     });
   }
 
-  moveToTop(){
+  //   9. We're going to add methods on our class that we'll call in the event listeners
+  //     from the last step:
+  //     a. remove
+  //         - calls this.element.remove()
+  //     b. move to top
+  //         - use the insert before and the first element
+  //     c. move to understood
+  //         - append this.element to the understood list
+
+  moveToTop() {
     // inserting this.element before the first element
-    this.toLearnList.insertBefore(this.element, this.toLearnList.firstElementChild)
+    this.toLearnList.insertBefore(
+      this.element,
+      this.toLearnList.firstElementChild
+    );
   }
 
   moveToUnderstood() {
     this.understoodList.appendChild(this.element);
   }
-
 }
 
 //2. at the end of the file export the "Card" class and import it in the main.js file.

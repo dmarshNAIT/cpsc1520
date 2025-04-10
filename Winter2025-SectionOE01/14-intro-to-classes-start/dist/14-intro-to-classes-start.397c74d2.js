@@ -762,6 +762,14 @@ class Card {
             this.moveToUnderstood();
         });
     }
+    //   9. We're going to add methods on our class that we'll call in the event listeners
+    //     from the last step:
+    //     a. remove
+    //         - calls this.element.remove()
+    //     b. move to top
+    //         - use the insert before and the first element
+    //     c. move to understood
+    //         - append this.element to the understood list
     moveToTop() {
         // inserting this.element before the first element
         this.toLearnList.insertBefore(this.element, this.toLearnList.firstElementChild);
