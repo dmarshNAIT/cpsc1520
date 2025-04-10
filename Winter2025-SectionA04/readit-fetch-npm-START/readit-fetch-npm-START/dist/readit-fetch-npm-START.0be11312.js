@@ -160,11 +160,11 @@
       });
     }
   }
-})({"7DrE3":[function(require,module,exports,__globalThis) {
+})({"aStUg":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 52449;
+var HMR_SERVER_PORT = 64828;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -785,18 +785,29 @@ const voteUp = (buttonElement)=>{
     let scoreElement = cardBodyElement.children[1] // the second element
     ;
     changeScore(scoreElement, 1);
-    changeItemOrder(cardBodyElement);
+//changeItemOrder(cardBodyElement) // this moves to changeScore()
 };
 const voteDown = (buttonElement)=>{
     let cardBodyElement = buttonElement.parentNode;
     let scoreElement = cardBodyElement.children[1] // the second element
     ;
     changeScore(scoreElement, -1);
-    changeItemOrder(cardBodyElement);
+//changeItemOrder(cardBodyElement) // this moves to changeScore()
 };
 const changeScore = (scoreElement, value)=>{
     let currentScore = parseInt(scoreElement.textContent);
-    scoreElement.textContent = currentScore + value;
+    const newScore = currentScore + value;
+    const postID = scoreElement.parentNode.parentNode.getAttribute('post-id');
+    // call the api function to update the score on the server
+    (0, _apiJs.updatePost)({
+        id: postID,
+        score: newScore
+    })// THEN we can update the score on the page
+    // AND changeItemOrder on the page
+    .then((post)=>{
+        scoreElement.textContent = post.score;
+        changeItemOrder(scoreElement.parentNode);
+    });
 };
 const changeItemOrder = (cardBodyElement)=>{
     // below gets the parent of element with "card-body"
@@ -871,13 +882,15 @@ const createNewPost = ({ title, url, score })=>{
     });
 };
 // create a function to UPDATE an existing post
-const updatePost = (params)=>{
-    return fetch(`${BASE_URL}/posts`, {
+const updatePost = ({ id, score })=>{
+    return fetch(`${BASE_URL}/posts/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(params) // TODO: replace with actual params
+        body: JSON.stringify({
+            score: score
+        })
     }).then((response)=>{
         return response.json();
     }).then((post)=>{
@@ -915,6 +928,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["7DrE3","NhzJs"], "NhzJs", "parcelRequirec3a0", {})
+},{}]},["aStUg","NhzJs"], "NhzJs", "parcelRequirec3a0", {})
 
 //# sourceMappingURL=readit-fetch-npm-START.0be11312.js.map

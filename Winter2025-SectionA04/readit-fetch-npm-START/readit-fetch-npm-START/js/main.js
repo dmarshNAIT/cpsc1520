@@ -120,19 +120,29 @@ const voteUp = (buttonElement) => {
     let cardBodyElement = buttonElement.parentNode
     let scoreElement = cardBodyElement.children[1] // the second element
     changeScore(scoreElement, 1)
-    changeItemOrder(cardBodyElement)
+    //changeItemOrder(cardBodyElement) // this moves to changeScore()
 }
 
 const voteDown = (buttonElement)=> {
     let cardBodyElement = buttonElement.parentNode
     let scoreElement = cardBodyElement.children[1] // the second element
     changeScore(scoreElement, -1)
-    changeItemOrder(cardBodyElement)
+    //changeItemOrder(cardBodyElement) // this moves to changeScore()
 }
 
 const changeScore = (scoreElement, value) => {
     let currentScore = parseInt(scoreElement.textContent)
-    scoreElement.textContent = currentScore + value
+    const newScore = currentScore + value;
+    const postID = scoreElement.parentNode.parentNode.getAttribute('post-id');
+
+    // call the api function to update the score on the server
+    updatePost({id: postID, score: newScore})
+    // THEN we can update the score on the page
+    // AND changeItemOrder on the page
+    .then((post) => {
+        scoreElement.textContent = post.score;
+        changeItemOrder(scoreElement.parentNode);
+    });
 }
 
 const changeItemOrder = (cardBodyElement) => {
