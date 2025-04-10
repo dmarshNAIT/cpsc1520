@@ -34,14 +34,16 @@ const createNewPost = ({title, url, score}) => {
 }
 
 // create a function to UPDATE an existing post
-const updatePost = (params) => {
-  return fetch(`${BASE_URL}/posts`, //TODO: replace with actual URL
+const updatePost = ({id, score}) => {
+  return fetch(`${BASE_URL}/posts/${id}`, 
     {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(params) // TODO: replace with actual params
+      body: JSON.stringify({score: score}) 
+      // the first score is the name of the property
+      // the second score is the value of the property (in this case, the parameter value)
     }
   )
     .then((response) => {
