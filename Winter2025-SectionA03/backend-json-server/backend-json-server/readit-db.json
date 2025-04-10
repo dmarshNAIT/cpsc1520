@@ -23,6 +23,12 @@
       "title": "Pycon US Conference talk links",
       "url": "https://www.youtube.com/c/PyConUS",
       "score": 13
+    },
+    {
+      "title": "set up eslint",
+      "url": "https://www.digitalocean.com/community/tutorials/linting-and-formatting-with-eslint-in-vs-code",
+      "score": 21,
+      "id": 5
     }
   ]
 }
