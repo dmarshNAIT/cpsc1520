@@ -12,9 +12,21 @@ they're going to get removed from the screen.
 
 */
 
-
 // import our bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import '../css/main.css'
+import '../css/main.css';
 
+import { Balloon } from './utils/balloon.js';
+
+for (let i = 0; i < 20; i++) {
+  const newBalloon = new Balloon();
+  document.querySelector('.balloons').appendChild(newBalloon.element);
+}
+
+// add an event listener
+// when we click on a balloon, remove it
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('single-balloon'))
+        event.target.remove();
+})
