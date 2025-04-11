@@ -2,7 +2,6 @@
   "name": "npm-fundamentals-start",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "source": "index.html",
   "scripts": {
     "start": "parcel",

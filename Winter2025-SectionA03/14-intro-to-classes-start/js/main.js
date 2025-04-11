@@ -34,7 +34,7 @@ as an object.
 10. Add the necessary statement to create a new Card when the form is submitted.
 */
 
-
+import { Card } from './utils/card.js';
 // import our bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -60,6 +60,7 @@ const stickies = [
 
 stickies.forEach((stickyDetail) => {
   // create new cards
+  new Card({title: stickyDetail.title, description: stickyDetail.description});
 });
 
 const newTopicForm = document.querySelector('#new-topic-form');
@@ -70,7 +71,7 @@ newTopicForm.addEventListener('submit', (event) => {
   const titleElement = event.target.elements['title'];
   const descriptionElement = event.target.elements['description'];
   // create new card here
-
+  new Card({title: titleElement.value, description: descriptionElement.value});
   titleElement.value = '';
   descriptionElement.value = '';
 });

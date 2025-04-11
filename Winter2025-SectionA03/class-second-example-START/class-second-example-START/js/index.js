@@ -18,3 +18,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../css/main.css'
 
+import { Balloon } from './utils/balloon.js';
+
+for(let i = 0; i < 50; i++) {
+    const newBalloon = new Balloon();
+    document.querySelector('.balloons').appendChild(newBalloon.element);
+}
+
+document.addEventListener('click', (event) => {
+   if (event.target.classList.contains('single-balloon')) 
+    event.target.remove();
+});
