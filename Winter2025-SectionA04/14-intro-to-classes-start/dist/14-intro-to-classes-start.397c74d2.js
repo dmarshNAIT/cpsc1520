@@ -160,11 +160,11 @@
       });
     }
   }
-})({"MAtcu":[function(require,module,exports,__globalThis) {
+})({"9IyOz":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 1234;
+var HMR_SERVER_PORT = 54537;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -718,7 +718,7 @@ newTopicForm.addEventListener('submit', (event)=>{
     descriptionElement.value = '';
 });
 
-},{"bootstrap/dist/css/bootstrap.min.css":"i5LP7","./utils/card.js":"gQ77l"}],"i5LP7":[function() {},{}],"gQ77l":[function(require,module,exports,__globalThis) {
+},{"./utils/card.js":"gQ77l","bootstrap/dist/css/bootstrap.min.css":"i5LP7"}],"gQ77l":[function(require,module,exports,__globalThis) {
 // 4. import the create card js dom element from the "dom" folder like so.
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -847,6 +847,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["MAtcu","agb61"], "agb61", "parcelRequire0fc1", {})
+},{}],"i5LP7":[function() {},{}]},["9IyOz","agb61"], "agb61", "parcelRequire0fc1", {})
 
 //# sourceMappingURL=14-intro-to-classes-start.397c74d2.js.map
